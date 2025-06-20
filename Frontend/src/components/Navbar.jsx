@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { motion } from 'framer-motion';
 import { FaBars, FaTimes, FaHome, FaInfoCircle, FaRunning, FaEdit, FaImage, FaMap, FaNewspaper, FaEnvelope } from 'react-icons/fa';
 
 function Navbar() {
@@ -8,14 +9,25 @@ function Navbar() {
 
   return (
     <nav className="fixed w-full bg-gray-800 text-white flex items-center justify-between px-6 py-4 z-50">
-      <div className="text-2xl font-bold">Media Maratón</div>
+      {/* Logo con animación */}
+      <div className="flex items-center gap-2">
+        <motion.img
+          src="/Logo.png"
+          alt="Logo 21K"
+          className="h-20 w-20 object-contain"
+          initial={{ rotate: -20, opacity: 0 }}
+          animate={{ rotate: 0, opacity: 1 }}
+          transition={{ duration: 1 }}
+        />
+        <span className="text-2xl font-bold">21K Running Popayán</span>
+      </div>
 
       {/* Icono de menú para móviles y tablets */}
       <div className="lg:hidden text-3xl cursor-pointer" onClick={toggleMenu}>
         {menuOpen ? <FaTimes /> : <FaBars />}
       </div>
 
-      {/* Menú desktop (solo visible en pantallas grandes) */}
+      {/* Menú desktop */}
       <div className="hidden lg:flex gap-6">
         <a href="#hero" className="flex items-center gap-2 hover:text-yellow-400 transition"><FaHome />Inicio</a>
         <a href="#about" className="flex items-center gap-2 hover:text-yellow-400 transition"><FaInfoCircle />Sobre el Evento</a>
@@ -45,4 +57,3 @@ function Navbar() {
 }
 
 export default Navbar;
-
