@@ -1,16 +1,40 @@
-import { FaFacebook, FaInstagram, FaTwitter } from 'react-icons/fa';
+// src/components/SocialMediaFloating.jsx
+import { FaFacebook, FaInstagram,  FaTelegramPlane } from 'react-icons/fa';
 
 function SocialMediaFloating() {
+  const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+  // Links dinámicos
+  const telegramLink = isMobile
+    ? 'tg://resolve?domain=NOMBRE_DE_TU_BOT'
+    : 'https://t.me/RunningPopayanBot';
+
+  const facebookLink = isMobile
+    ? 'fb://profile/jugo.listo.9/about_details'  // Este abre la app de Facebook
+    : 'https://facebook.com/jugo.listo.9/about_details';
+
+  const instagramLink = isMobile
+    ? 'instagram://user?username=TU_USUARIO'  // Este abre la app de Instagram
+    : 'https://instagram.com/TU_USUARIO';
+
   return (
     <div className="fixed left-4 bottom-4 flex flex-col gap-4 z-50">
-      <a href="https://www.facebook.com/jugo.listo.9/about_details" target="_blank" rel="noopener noreferrer" className="bg-blue-600 text-white p-3 rounded-full shadow-lg hover:bg-blue-700">
+      {/* Facebook */}
+      <a href={facebookLink} target="_blank" rel="noopener noreferrer" className="bg-blue-600 text-white p-3 rounded-full shadow-lg hover:bg-blue-700">
         <FaFacebook size={24} />
       </a>
-      <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="bg-pink-500 text-white p-3 rounded-full shadow-lg hover:bg-pink-600">
+
+      {/* Instagram */}
+      <a href={instagramLink} target="_blank" rel="noopener noreferrer" className="bg-pink-500 text-white p-3 rounded-full shadow-lg hover:bg-pink-600">
         <FaInstagram size={24} />
-      </a>     
+      </a>      
+
+      {/* Telegram */}
+      <a href={telegramLink} target="_blank" rel="noopener noreferrer" className="bg-blue-500 text-white p-3 rounded-full shadow-lg hover:bg-blue-600">
+        <FaTelegramPlane size={24} />
+      </a>
     </div>
   )
 }
 
-export default SocialMediaFloating
+export default SocialMediaFloating;

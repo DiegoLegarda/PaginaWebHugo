@@ -11,7 +11,7 @@ import NewsSection from './components/NewsSection'
 import Contact from './components/Contact'
 import SocialMediaFloating from './components/SocialMediaFloating'
 import Footer from './components/Footer'
-import TawkTo from './components/TawkTo';
+
 
 function App() {
   return (
@@ -26,8 +26,7 @@ function App() {
       <Gallery />
       <RouteMap />
       <NewsSection />
-      <Contact />
-      
+      <Contact />      
       <SocialMediaFloating />
       <Footer />
     </>
