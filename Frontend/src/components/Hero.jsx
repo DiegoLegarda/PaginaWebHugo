@@ -29,7 +29,7 @@ function Hero() {
       {/* Contenedor del título por encima de todo */}
       <div className="relative z-20 flex flex-col items-center justify-center h-full w-full text-center p-8">
         <h1 className="text-4xl md:text-6xl font-bold mb-4 opacity-50">21k Running X Popayán</h1>
-        <p className="text-xl">¡Corre por un sueño, corre por tu ciudad!</p>
+        <p className="text-xl">¡Corre Hugo por un sueño!</p>
       </div>
 
     </motion.section>
