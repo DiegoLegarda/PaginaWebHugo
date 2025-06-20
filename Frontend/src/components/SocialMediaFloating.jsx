@@ -6,12 +6,12 @@ function SocialMediaFloating() {
 
   // Links dinámicos
   const telegramLink = isMobile
-    ? 'tg://resolve?domain=NOMBRE_DE_TU_BOT'
-    : 'https://t.me/RunningPopayanBot';
+    ? 'tg://resolve?domain=RunningPopayanbot' // Este abre la app de Telegram
+    : 'https://t.me/RunningPopayanbot';
 
   const facebookLink = isMobile
-    ? 'fb://profile/jugo.listo.9/about_details'  // Este abre la app de Facebook
-    : 'https://facebook.com/jugo.listo.9/about_details';
+    ? 'fb://profile/jugo.listo.9'  // Este abre la app de Facebook
+    : 'https://facebook.com/jugo.listo.9';
 
   const instagramLink = isMobile
     ? 'instagram://user?username=TU_USUARIO'  // Este abre la app de Instagram
