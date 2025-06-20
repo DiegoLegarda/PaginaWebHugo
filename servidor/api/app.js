@@ -10,13 +10,26 @@ const puerto = process.env.PORT || 3001;
 // Middleware para parsear el body de la solicitud
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+const allowedOrigins = [
+  'http://localhost:5173',
+  'https://pagina-running-popayan.vercel.app'
+  
+];
+
 app.use(cors({
   credentials: true,
-  origin: ['http://localhost:5173','https://pagina-running-popayan.vercel.app/'],
-  //origin: 'https://ejemplodesplieguereact.vercel.app',
+  origin: (origin, callback) => {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('No permitido por CORS'));
+    }
+  },
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization']
-}))
+}));
+
 
 //escribir un metodo get
 app.get('/inicio', (req, res) => {
