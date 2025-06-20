@@ -6,8 +6,8 @@ function SocialMediaFloating() {
 
   // Links dinámicos
   const telegramLink = isMobile
-    ? 'tg://resolve?domain=RunningPopayanbot' // Este abre la app de Telegram
-    : 'https://t.me/RunningPopayanbot';
+    ? 'tg://resolve?domain=Runningpopabot' // Este abre la app de Telegram
+    : 'https://t.me/Runningpopabot';
 
   const facebookLink = isMobile
     ? 'fb://profile/jugo.listo.9'  // Este abre la app de Facebook
