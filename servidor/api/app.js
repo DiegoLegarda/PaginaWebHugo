@@ -1,12 +1,8 @@
 const express = require('express');
-const rutasUsuario = require('./rutas/rutasUser');
 const connectDB = require('./BaseDatos/conexionmongoDB');
-const rutasMongoDB = require('./rutas/rutasMongoDB');
-const autenticacion = require('./Intermediarios/autenticacion.js'); 
-const Token = require('./Intermediarios/token.js');
 const cors = require('cors');
 const router = express.Router();
-const cors = require('cors');
+
 
 const app = express();
 const puerto = process.env.PORT || 3001;
@@ -28,17 +24,10 @@ app.get('/inicio', (req, res) => {
 });
 
 // Rutas
-app.use('/api/user',rutasUsuario);
-app.use('/api/mongoDB', rutasMongoDB);
+app.use('/api/registro', require('./rutas/registro'));
+app.use('/api/contacto', require('./rutas/contacto'));
 
-/*
-app.get('/api/login',autenticacion,Token.envioToken,async(req,res)=>{
-  res.json({ mensaje: "acceso concedido" });
-});
-*/
-app.get('/api/login',autenticacion,Token.envioTokenCookie,async(req,res)=>{
-  res.json({ mensaje: "acceso concedido" });
-});
+
 // Conectar a la base de datos
 connectDB();
 

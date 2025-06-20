@@ -23,7 +23,7 @@ bot.on('message', (msg) => {
 
   // Menú inicial
   if (text.includes('hola') || text.includes('buenas')) {
-    bot.sendMessage(chatId, '¡Hola! Bienvenido a la Media Maratón de Popayán 🏃‍♂️. ¿Qué deseas consultar?', {
+    bot.sendMessage(chatId, '¡Hola! Bienvenido a 27k Running Popayán 🏃‍♂️. ¿Qué deseas consultar?', {
       reply_markup: {
         inline_keyboard: [
           [{ text: 'Inscripción 📝', callback_data: 'inscripcion' }],
