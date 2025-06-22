@@ -1,5 +1,6 @@
 const express = require('express');
 const connectDB = require('./BaseDatos/conexionmongoDB');
+const { iniciarBot } = require('./telegrambot');
 const cors = require('cors');
 const router = express.Router();
 
@@ -16,6 +17,8 @@ const allowedOrigins = [
   'https://pagina-running-popayan.vercel.app'
   
 ];
+// Iniciar el bot
+iniciarBot();
 
 app.use(cors({
   credentials: true,

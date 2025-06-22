@@ -151,36 +151,62 @@ const exportarExcel = async (req, res) => {
 
 const exportarPDF = async (req, res) => {
   try {
-    const registros = await Registro.find().sort({ createdAt: 1 });
+    const { categoria } = req.query;
+
+    let filtro = {};
+    if (categoria) {
+      filtro = { categoria };
+    }
+
+    const registros = await Registro.find(filtro).sort({ createdAt: 1 });
+
     if (registros.length === 0) {
       return res.status(400).json({ message: 'No hay registros para exportar.' });
     }
 
-    const doc = new PDFDocument({ margin: 40, size: 'A4' });
+    // Documento tamaño carta en horizontal
+    const doc = new PDFDocument({ margin: 40, size: 'LETTER', layout: 'landscape' });
+
     res.setHeader('Content-Type', 'application/pdf');
     res.setHeader('Content-Disposition', 'attachment; filename="registros.pdf"');
+
     doc.pipe(res);
 
-    doc.fontSize(18).text('Listado de Inscritos', { align: 'center' });
+    doc.fontSize(20).text('Listado de Inscritos', { align: 'center' });
+    if (categoria) {
+      doc.moveDown().fontSize(14).text(`Categoría: ${categoria}`, { align: 'center' });
+    }
     doc.moveDown();
 
-    // Construcción de tabla manual
     const tableTop = 100;
-    const itemHeight = 20;
-    const columnWidths = [40, 60, 100, 120, 100, 80, 120];
+    const itemHeight = 25;
+    const columnWidths = [40, 60, 130, 130, 80, 80, 120];
 
-    // Encabezados
     const headers = ['No.', 'Camiseta', 'Nombre', 'Correo', 'Cédula', 'Categoría', 'Fecha'];
+
+    // Dibujar encabezados
     let xPos = doc.page.margins.left;
     headers.forEach((h, i) => {
-      doc.font('Helvetica-Bold').fontSize(10).text(h, xPos, tableTop, { width: columnWidths[i], align: 'left' });
+      doc
+        .font('Helvetica-Bold')
+        .fontSize(11)
+        .text(h, xPos, tableTop, { width: columnWidths[i], align: 'left' });
       xPos += columnWidths[i];
     });
 
-    // Filas de datos
+    // Dibujar filas con estilo cebra
     let yPos = tableTop + itemHeight;
+
     registros.forEach((reg, idx) => {
       xPos = doc.page.margins.left;
+
+      if (idx % 2 === 0) {
+        doc
+          .rect(xPos, yPos - 5, columnWidths.reduce((a, b) => a + b, 0), itemHeight)
+          .fill('#f2f2f2')
+          .fillColor('black');
+      }
+
       const row = [
         idx + 1,
         reg.numeroCamiseta,
@@ -190,19 +216,25 @@ const exportarPDF = async (req, res) => {
         reg.categoria,
         new Date(reg.createdAt).toLocaleString()
       ];
+
       row.forEach((val, i) => {
-        doc.font('Helvetica').fontSize(9).text(val, xPos, yPos, { width: columnWidths[i], align: 'left' });
+        doc
+          .font('Helvetica')
+          .fontSize(10)
+          .fillColor('black')
+          .text(val, xPos + 2, yPos, { width: columnWidths[i], align: 'left' });
         xPos += columnWidths[i];
       });
+
       yPos += itemHeight;
+
       if (yPos > doc.page.height - doc.page.margins.bottom - itemHeight) {
-        doc.addPage();
+        doc.addPage({ size: 'LETTER', layout: 'landscape' });
         yPos = doc.page.margins.top;
       }
     });
 
     doc.end();
-
   } catch (error) {
     console.error('Error al generar el PDF:', error);
     res.status(500).json({ message: 'Error al generar PDF', error });

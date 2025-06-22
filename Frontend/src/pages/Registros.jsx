@@ -5,16 +5,19 @@ import { useNavigate } from 'react-router-dom';
 function Registros() {
   const [registros, setRegistros] = useState([]);
   const [filtro, setFiltro] = useState('');
+  const [categoriaFiltro, setCategoriaFiltro] = useState('');
   const [paginaActual, setPaginaActual] = useState(1);
   const [totalPaginas, setTotalPaginas] = useState(1);
   const navigate = useNavigate();
   const registrosPorPagina = 10;
 
+  const categorias = ['5K', '10K', '21K', '42K'];
+
   useEffect(() => {
     const obtenerRegistros = async () => {
       try {
         const respuesta = await axios.get(`http://localhost:3002/api/registro?page=${paginaActual}&limit=${registrosPorPagina}`);
-        setRegistros(respuesta.data.mensajes); // Cambia a registros si tu backend lo devuelve así
+        setRegistros(respuesta.data.mensajes);
         setTotalPaginas(respuesta.data.totalPages);
       } catch (error) {
         console.error('Error al obtener registros:', error);
@@ -24,10 +27,18 @@ function Registros() {
     obtenerRegistros();
   }, [paginaActual]);
 
-  const registrosFiltrados = registros.filter((registro) =>
-    (registro.nombreCompleto || '').toLowerCase().includes(filtro.toLowerCase()) ||
-    (registro.numeroCamiseta || '').toLowerCase().includes(filtro.toLowerCase())
-  );
+  // Filtro por nombre, camiseta y categoría
+  const registrosFiltrados = registros.filter((registro) => {
+    const coincideNombre = (registro.nombreCompleto || '').toLowerCase().includes(filtro.toLowerCase());
+    const coincideCamiseta = (registro.numeroCamiseta || '').toLowerCase().includes(filtro.toLowerCase());
+    const coincideCategoria = categoriaFiltro ? registro.categoria === categoriaFiltro : true;
+    return (coincideNombre || coincideCamiseta) && coincideCategoria;
+  });
+
+  const cerrarSesion = () => {
+    localStorage.removeItem('token');
+    navigate('/');
+  };
 
   const siguientePagina = () => {
     if (paginaActual < totalPaginas) setPaginaActual(paginaActual + 1);
@@ -37,11 +48,20 @@ function Registros() {
     if (paginaActual > 1) setPaginaActual(paginaActual - 1);
   };
 
+  const exportar = (tipo) => {
+    let url = `http://localhost:3002/api/registro/exportar-${tipo}`;
+    if (categoriaFiltro) {
+      url += `?categoria=${categoriaFiltro}`;
+    }
+    window.open(url, '_blank');
+  };
+
   return (
     <div className="p-4">
       <h1 className="text-2xl font-bold mb-4 text-center">Listado de Registros</h1>
 
-      <div className="mb-4 flex justify-between items-center">
+      {/* Filtros */}
+      <div className="mb-4 flex flex-wrap gap-4 justify-between items-center">
         <input
           type="text"
           placeholder="Filtrar por nombre o número de camiseta..."
@@ -50,14 +70,27 @@ function Registros() {
           className="border border-gray-300 p-2 rounded w-1/3"
         />
 
+        <select
+          value={categoriaFiltro}
+          onChange={(e) => setCategoriaFiltro(e.target.value)}
+          className="border border-gray-300 p-2 rounded"
+        >
+          <option value="">Todas las Categorías</option>
+          {categorias.map((cat, idx) => (
+            <option key={idx} value={cat}>{cat}</option>
+          ))}
+        </select>
+
         <button
           className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
           onClick={() => navigate('/panel')}
         >
           Regresar al Panel
         </button>
+        <button onClick={cerrarSesion} className="bg-red-500 text-white px-4 py-2 rounded">Cerrar Sesión</button>
       </div>
 
+      {/* Tabla */}
       <div className="overflow-x-auto">
         <table className="min-w-full bg-white border border-gray-300">
           <thead>
@@ -84,24 +117,23 @@ function Registros() {
           </tbody>
         </table>
       </div>
-            <div>
-              <div className="mb-4 flex gap-4">
-  <button
-    className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600"
-    onClick={() => window.open('http://localhost:3002/api/registro/exportar-excel')}
-  >
-    Exportar a Excel
-  </button>
 
-  <button
-    className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600"
-    onClick={() => window.open('http://localhost:3002/api/registro/exportar-pdf')}
-  >
-    Exportar a PDF
-  </button>
-</div>
-            </div>
+      {/* Botones de exportación */}
+      <div className="mb-4 flex gap-4 mt-4 justify-center">
+        <button
+          className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600"
+          onClick={() => exportar('excel')}
+        >
+          Exportar a Excel {categoriaFiltro && `(solo ${categoriaFiltro})`}
+        </button>
 
+        <button
+          className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600"
+          onClick={() => exportar('pdf')}
+        >
+          Exportar a PDF {categoriaFiltro && `(solo ${categoriaFiltro})`}
+        </button>
+      </div>
 
       {/* Controles de paginación */}
       <div className="flex justify-center mt-4 space-x-4">
@@ -128,4 +160,3 @@ function Registros() {
 }
 
 export default Registros;
-
