@@ -18,11 +18,29 @@ const enviarMensaje = async (req, res) => {
   }
 };
 
-// Obtener todos los mensajes
+// Obtener mensajes con paginación y filtro por estado
 const obtenerMensajes = async (req, res) => {
   try {
-    const mensajes = await Contacto.find();
-    res.status(200).json(mensajes);
+    const { page = 1, limit = 10, estado } = req.query;
+
+    // Construir el filtro dinámico
+    const filtro = {};
+    if (estado && estado !== 'todos') {
+      filtro.estado = estado;
+    }
+
+    const mensajes = await Contacto.find(filtro)
+      .skip((page - 1) * limit)
+      .limit(Number(limit))
+      .sort({ createdAt: -1 });
+
+    const total = await Contacto.countDocuments(filtro);
+
+    res.status(200).json({
+      mensajes,
+      totalPages: Math.ceil(total / limit),
+      currentPage: Number(page)
+    });
   } catch (error) {
     res.status(500).json({ message: 'Error al obtener mensajes', error });
   }
