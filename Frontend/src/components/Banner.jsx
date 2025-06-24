@@ -7,7 +7,7 @@ import 'swiper/css/pagination';
 
 function BannerCarrusel() {
   return (
-    <section className="mt-24 w-full max-h-[85vh] overflow-hidden">
+    <section id="banner" className="mt-24 w-full max-h-[85vh] overflow-hidden">
       <Swiper
         modules={[Autoplay, EffectFade, Pagination, Navigation, Keyboard]}
         effect="fade"
