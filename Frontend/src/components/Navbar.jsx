@@ -12,14 +12,14 @@ function Navbar() {
       {/* Logo con animación */}
       <div className="flex items-center gap-2">
         <motion.img
-          src="/Logo.png"
+          src="/LogoRunning.png"
           alt="Logo 21K"
           className="h-20 w-20 object-contain"
           initial={{ rotate: -20, opacity: 0 }}
           animate={{ rotate: 0, opacity: 1 }}
           transition={{ duration: 1 }}
         />
-        <span className="text-2xl font-bold">21K Running Popayán</span>
+        <span className="text-2xl font-bold">12K Running Popayán</span>
       </div>
 
       {/* Icono de menú para móviles y tablets */}
