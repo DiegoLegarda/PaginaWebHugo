@@ -1,6 +1,7 @@
 // src/pages/Home.jsx
 import Navbar from '../components/Navbar';
-import Hero from '../components/Hero';
+//import Hero from '../components/Hero';
+import BannerCarrusel from '../components/Banner';
 import Countdown from '../components/Countdown';
 import About from '../components/About';
 import SponsorsCarousel from '../components/SponsorsCarousel';
@@ -17,7 +18,7 @@ function Home() {
   return (
     <>
       <Navbar />
-      <Hero />
+      <BannerCarrusel />
       <Countdown />
       <About />
       <SponsorsCarousel />
