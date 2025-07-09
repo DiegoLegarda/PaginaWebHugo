@@ -6,6 +6,7 @@ import AdminPanel from './pages/AdminPanel';
 import Registro from './pages/Registros';
 import Mensajes from './pages/Mensajes';
 import PrivateRoute from './PrivateRoute';
+import Terminos from './pages/Terminos';
 import { AuthProvider } from './AuthContext';
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
           <Route path="/registro" element={<Registro />} />
           <Route path="/contacto" element={<Contacto />} />
           <Route path="/admin" element={<AdminLogin />} />
+          <Route path="/terminos" element={<Terminos />} />
           
           {/* RUTAS PROTEGIDAS SEPARADAS */}
           <Route path="/panel" element={<PrivateRoute><AdminPanel /></PrivateRoute>} />

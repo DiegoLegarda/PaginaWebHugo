@@ -11,40 +11,47 @@ function RegistrationForm() {
 
   const [mensaje, setMensaje] = useState('');
   const [pagoRealizado, setPagoRealizado] = useState(false);
+  const [aceptaTerminos, setAceptaTerminos] = useState(false);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handlePago = () => {
-    // Simulación de pago
     setPagoRealizado(true);
     setMensaje('Pago confirmado. Ahora puedes registrarte.');
   };
 
   const handleSubmit = async (e) => {
-  e.preventDefault();
+    e.preventDefault();
 
-  if (!pagoRealizado) {
-    setMensaje('Debes realizar el pago antes de registrarte.');
-    return;
-  }
-
-  try {
-    const res = await axios.post('http://localhost:3002/api/registro', { ...formData, pagado: true });
-    setMensaje('Registro exitoso. ¡Gracias por inscribirte!');
-    setFormData({ nombreCompleto: '', correo: '', identificacion: '', categoria: '' });
-    setPagoRealizado(false);
-  } catch (error) {
-    if (error.response && error.response.data && error.response.data.message) {
-      setMensaje(error.response.data.message); // Mostramos el mensaje del backend
-    } else {
-      setMensaje('Error al registrar. Intenta de nuevo.');
+    if (!pagoRealizado) {
+      setMensaje('Debes realizar el pago antes de registrarte.');
+      return;
     }
-    console.error(error);
-  }
-};
 
+    if (!aceptaTerminos) {
+      setMensaje('Debes aceptar los Términos y Condiciones antes de registrarte.');
+      return;
+    }
+
+    try {
+      const res = await axios.post('http://localhost:3002/api/registro', {
+        ...formData,
+        pagado: true
+      });
+      setMensaje('Registro exitoso. ¡Gracias por inscribirte!');
+      setFormData({ nombreCompleto: '', correo: '', identificacion: '', categoria: '' });
+      setPagoRealizado(false);
+      setAceptaTerminos(false);
+    } catch (error) {
+      if (error.response?.data?.message) {
+        setMensaje(error.response.data.message);
+      } else {
+        setMensaje('Error al registrar. Intenta de nuevo.');
+      }
+    }
+  };
 
   return (
     <section id="register" className="p-8 bg-gray-100">
@@ -58,13 +65,36 @@ function RegistrationForm() {
           <option value="">Selecciona categoría</option>
           <option value="5K">5K</option>
           <option value="10K">10K</option>
-          <option value="21K">21K</option>          
+          <option value="21K">21K</option>
         </select>
 
-        <button 
-          type="submit" 
-          className={`font-bold py-2 px-4 rounded transition ${pagoRealizado ? 'bg-green-500 hover:bg-green-600 text-white' : 'bg-gray-400 text-gray-700 cursor-not-allowed'}`} 
-          disabled={!pagoRealizado}
+        {/* Casilla de verificación */}
+        <div className="flex items-start text-sm text-gray-700">
+          <input
+            type="checkbox"
+            id="terminos"
+            checked={aceptaTerminos}
+            onChange={(e) => setAceptaTerminos(e.target.checked)}
+            className="mt-1 mr-2"
+            required
+          />
+          <label htmlFor="terminos">
+            Acepto los{' '}
+            <a href="/terminos" target="_blank" rel="noopener noreferrer" className="text-blue-600 underline">
+              Términos y Condiciones
+            </a>{' '}
+            de la competencia.
+          </label>
+        </div>
+
+        <button
+          type="submit"
+          className={`font-bold py-2 px-4 rounded transition ${
+            pagoRealizado && aceptaTerminos
+              ? 'bg-green-500 hover:bg-green-600 text-white'
+              : 'bg-gray-400 text-gray-700 cursor-not-allowed'
+          }`}
+          disabled={!pagoRealizado || !aceptaTerminos}
         >
           Registrarse
         </button>
@@ -74,8 +104,8 @@ function RegistrationForm() {
 
       {/* Botón de Pago Simulado */}
       <div className="text-center mt-6">
-        <button 
-          onClick={handlePago} 
+        <button
+          onClick={handlePago}
           className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded transition"
         >
           Simular Pago
