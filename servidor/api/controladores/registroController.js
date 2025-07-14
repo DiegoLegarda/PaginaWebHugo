@@ -241,6 +241,53 @@ const exportarPDF = async (req, res) => {
   }
 };
 
+/* PATCH /:id/pagar */
+const marcarPagado = async (req,res)=>{
+  try{
+    const reg = await Registro.findByIdAndUpdate(
+      req.params.id,
+      { pagado:true },
+      { new:true }
+    );
+    if(!reg) return res.status(404).json({ message:'Registro no encontrado'});
+    res.json({ message:'Pago confirmado', data:reg });
+  }catch(err){
+    res.status(500).json({ message:'Error al confirmar pago', err });
+  }
+};
+
+const desmarcarPagado = async (req, res) => {
+  try {
+    const registro = await Registro.findByIdAndUpdate(
+      req.params.id,
+      { pagado: false },
+      { new: true }
+    );
+    if (!registro) {
+      return res.status(404).json({ mensaje: 'Registro no encontrado' });
+    }
+    res.json({ mensaje: 'Pago desmarcado', registro });
+  } catch (error) {
+    console.error('Error al desmarcar pago:', error);
+    res.status(500).json({ mensaje: 'Error en el servidor' });
+  }
+};
+const actualizarPago = async (req, res) => {
+  try {
+    // se envía { pagado: true/false }
+    const { pagado } = req.body;
+    const reg = await Registro.findByIdAndUpdate(
+      req.params.id,
+      { pagado },
+      { new: true }
+    );
+    if (!reg) return res.status(404).json({ message: 'Registro no encontrado' });
+    res.json(reg);
+  } catch (err) {
+    res.status(500).json({ message: 'Error al actualizar pago', err });
+  }
+};
+
 module.exports = {
   exportarExcel,
   exportarPDF,
@@ -248,6 +295,8 @@ module.exports = {
   obtenerRegistros,
   obtenerRegistroPorId,
   actualizarRegistro,
-  eliminarRegistro
-  
+  eliminarRegistro,
+  marcarPagado,
+  desmarcarPagado,
+  actualizarPago
 };

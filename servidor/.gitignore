@@ -37,3 +37,9 @@ coverage
 *.env.production.yml
 *.env.*.development.yml
 *.env.*.test.yml
+/uploads
+/public/uploads
+/public/images
+/public/css
+/public/js
+/public/fonts

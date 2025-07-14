@@ -6,33 +6,39 @@ function Registros() {
   const [registros, setRegistros] = useState([]);
   const [filtro, setFiltro] = useState('');
   const [categoriaFiltro, setCategoriaFiltro] = useState('');
+  const [soloPendientes, setSoloPendientes] = useState(false);
+  const [modalUrl, setModalUrl] = useState('');
   const [paginaActual, setPaginaActual] = useState(1);
   const [totalPaginas, setTotalPaginas] = useState(1);
   const navigate = useNavigate();
   const registrosPorPagina = 10;
+  const [identificacionFiltro, setIdentificacionFiltro] = useState('');
+
 
   const categorias = ['5K', '10K', '21K', '42K'];
 
-  useEffect(() => {
-    const obtenerRegistros = async () => {
-      try {
-        const respuesta = await axios.get(`http://localhost:3002/api/registro?page=${paginaActual}&limit=${registrosPorPagina}`);
-        setRegistros(respuesta.data.mensajes);
-        setTotalPaginas(respuesta.data.totalPages);
-      } catch (error) {
-        console.error('Error al obtener registros:', error);
-      }
-    };
+  const obtenerRegistros = async () => {
+    try {
+      const res = await axios.get(`http://localhost:3002/api/registro?page=${paginaActual}&limit=${registrosPorPagina}`);
+      setRegistros(res.data.mensajes);
+      setTotalPaginas(res.data.totalPages);
+    } catch (error) {
+      console.error('Error al obtener registros:', error);
+    }
+  };
 
+  useEffect(() => {
     obtenerRegistros();
   }, [paginaActual]);
 
-  // Filtro por nombre, camiseta y categoría
-  const registrosFiltrados = registros.filter((registro) => {
-    const coincideNombre = (registro.nombreCompleto || '').toLowerCase().includes(filtro.toLowerCase());
-    const coincideCamiseta = (registro.numeroCamiseta || '').toLowerCase().includes(filtro.toLowerCase());
-    const coincideCategoria = categoriaFiltro ? registro.categoria === categoriaFiltro : true;
-    return (coincideNombre || coincideCamiseta) && coincideCategoria;
+  const registrosFiltrados = registros.filter((r) => {
+    const filtroTexto = filtro.toLowerCase();
+    const coincideNombre = r.nombreCompleto?.toLowerCase().includes(filtroTexto);
+    const coincideIdentificacion = r.identificacion?.includes(identificacionFiltro);
+    const coincideCamiseta = r.numeroCamiseta?.toLowerCase().includes(filtroTexto);
+    const coincideCategoria = categoriaFiltro ? r.categoria === categoriaFiltro : true;
+    const coincidePago = soloPendientes ? !r.pagado : true;
+    return (coincideNombre || coincideCamiseta) && coincideCategoria && coincidePago && coincideIdentificacion;
   });
 
   const cerrarSesion = () => {
@@ -40,34 +46,49 @@ function Registros() {
     navigate('/');
   };
 
-  const siguientePagina = () => {
-    if (paginaActual < totalPaginas) setPaginaActual(paginaActual + 1);
-  };
-
-  const paginaAnterior = () => {
-    if (paginaActual > 1) setPaginaActual(paginaActual - 1);
-  };
-
   const exportar = (tipo) => {
     let url = `http://localhost:3002/api/registro/exportar-${tipo}`;
-    if (categoriaFiltro) {
-      url += `?categoria=${categoriaFiltro}`;
-    }
+    if (categoriaFiltro) url += `?categoria=${categoriaFiltro}`;
     window.open(url, '_blank');
   };
+
+  const abrirModal = (filename) => setModalUrl(`http://localhost:3002/uploads/${filename}`);
+
+const alternarPago = async (id, pagado) => {
+  try {
+    if (pagado) {
+      const confirmar = window.confirm('¿Estás seguro de que deseas marcar este registro como NO pagado?');
+      if (!confirmar) return;
+    }
+
+    await axios.patch(`http://localhost:3002/api/registro/${id}/pago`, {
+      pagado: !pagado
+    });
+
+    obtenerRegistros();
+  } catch (error) {
+    console.error('Error al cambiar el estado de pago:', error);
+  }
+};
 
   return (
     <div className="p-4">
       <h1 className="text-2xl font-bold mb-4 text-center">Listado de Registros</h1>
 
-      {/* Filtros */}
-      <div className="mb-4 flex flex-wrap gap-4 justify-between items-center">
+      <div className="mb-4 flex flex-wrap gap-4 items-center justify-between">
         <input
           type="text"
-          placeholder="Filtrar por nombre o número de camiseta..."
+          placeholder="Filtrar por nombre o camiseta..."
           value={filtro}
           onChange={(e) => setFiltro(e.target.value)}
           className="border border-gray-300 p-2 rounded w-1/3"
+        />
+        <input
+          type="text"
+          placeholder="Buscar por cédula..."
+          value={identificacionFiltro}
+          onChange={(e) => setIdentificacionFiltro(e.target.value)}
+          className="border border-gray-300 p-2 rounded w-1/4"
         />
 
         <select
@@ -81,79 +102,120 @@ function Registros() {
           ))}
         </select>
 
-        <button
-          className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
-          onClick={() => navigate('/panel')}
-        >
-          Regresar al Panel
-        </button>
-        <button onClick={cerrarSesion} className="bg-red-500 text-white px-4 py-2 rounded">Cerrar Sesión</button>
+        <label className="flex items-center text-sm gap-2">
+          <input
+            type="checkbox"
+            checked={soloPendientes}
+            onChange={e => setSoloPendientes(e.target.checked)}
+          />
+          Solo pendientes
+        </label>
+
+        <div className="flex gap-2">
+          <button onClick={() => navigate('/panel')} className="bg-blue-500 text-white px-4 py-2 rounded">Volver</button>
+          <button onClick={cerrarSesion} className="bg-red-500 text-white px-4 py-2 rounded">Cerrar Sesión</button>
+        </div>
       </div>
 
       {/* Tabla */}
       <div className="overflow-x-auto">
-        <table className="min-w-full bg-white border border-gray-300">
-          <thead>
+        <table className="min-w-full bg-white border border-gray-300 text-sm">
+          <thead className="bg-gray-100">
             <tr>
-              <th className="py-2 px-4 border-b">Número Camiseta</th>
-              <th className="py-2 px-4 border-b">Nombre Completo</th>
-              <th className="py-2 px-4 border-b">Correo</th>
-              <th className="py-2 px-4 border-b">Identificación</th>
-              <th className="py-2 px-4 border-b">Categoría</th>
-              <th className="py-2 px-4 border-b">Fecha de Registro</th>
+              <th className="py-2 px-4 border-b">#</th>
+              <th className="py-2 px-4 border-b">Camiseta</th>
+              <th className="py-2 px-4 border-b">Nombre</th>
+              <th className="py-2 px-4 border-b hidden md:table-cell">Correo</th>
+              <th className="py-2 px-4 border-b hidden md:table-cell">Identificación</th>
+              <th className="py-2 px-4 border-b">Pagado</th>
+              <th className="py-2 px-4 border-b">Comprobante</th>
+              <th className="py-2 px-4 border-b">Acción</th>
             </tr>
           </thead>
           <tbody>
-            {registrosFiltrados.map((registro) => (
-              <tr key={registro._id}>
-                <td className="py-2 px-4 border-b text-center">{registro.numeroCamiseta}</td>
-                <td className="py-2 px-4 border-b">{registro.nombreCompleto}</td>
-                <td className="py-2 px-4 border-b">{registro.correo}</td>
-                <td className="py-2 px-4 border-b">{registro.identificacion}</td>
-                <td className="py-2 px-4 border-b">{registro.categoria}</td>
-                <td className="py-2 px-4 border-b">{new Date(registro.createdAt).toLocaleString()}</td>
+            {registrosFiltrados.map((r, i) => (
+              <tr key={r._id} className="odd:bg-white even:bg-gray-50">
+                <td className="text-center">
+                  {(paginaActual - 1) * registrosPorPagina + i + 1}
+                </td>
+                <td>{r.numeroCamiseta}</td>
+                <td>
+                  <p>{r.nombreCompleto}</p>
+                  <p className="md:hidden text-xs text-gray-500">{r.correo}</p>
+                  <p className="md:hidden text-xs text-gray-500">ID: {r.identificacion}</p>
+                </td>
+                <td className="hidden md:table-cell">{r.correo}</td>
+                <td className="hidden md:table-cell">{r.identificacion}</td>
+                <td>
+                  {r.pagado ? (
+                    <span className="px-2 py-1 rounded bg-green-600 text-white">✓</span>
+                  ) : (
+                    <span className="px-2 py-1 rounded bg-yellow-500 text-white">Pend.</span>
+                  )}
+                </td>
+                <td>
+                  <button
+                    onClick={() => abrirModal(r.comprobante)}
+                    className="underline text-blue-600 hover:text-blue-800"
+                  >
+                    Ver
+                  </button>
+                </td>
+                <td>
+                  <button
+                    onClick={() => alternarPago(r._id, r.pagado)}
+                    className={`px-3 py-1 rounded text-white ${
+                      r.pagado
+                        ? 'bg-green-600 hover:bg-green-700'
+                        : 'bg-yellow-500 hover:bg-yellow-600'
+                    }`}
+                  >
+                    {r.pagado ? '✓ Pagado' : 'Marcar'}
+                  </button>
+                </td>
               </tr>
             ))}
           </tbody>
         </table>
       </div>
 
-      {/* Botones de exportación */}
-      <div className="mb-4 flex gap-4 mt-4 justify-center">
-        <button
-          className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600"
-          onClick={() => exportar('excel')}
+      {/* Modal comprobante */}
+      {modalUrl && (
+        <div
+          className="fixed inset-0 bg-black/70 flex items-center justify-center z-50"
+          onClick={() => setModalUrl('')}
         >
+          {modalUrl.toLowerCase().endsWith('.pdf') ? (
+            <iframe src={modalUrl} className="w-[90%] h-[90%] bg-white rounded" />
+          ) : (
+            <img src={modalUrl} className="max-w-[90%] max-h-[90%] rounded" />
+          )}
+        </div>
+      )}
+
+      {/* Exportar */}
+      <div className="mb-4 flex gap-4 mt-4 justify-center">
+        <button onClick={() => exportar('excel')} className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">
           Exportar a Excel {categoriaFiltro && `(solo ${categoriaFiltro})`}
         </button>
-
-        <button
-          className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600"
-          onClick={() => exportar('pdf')}
-        >
+        <button onClick={() => exportar('pdf')} className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">
           Exportar a PDF {categoriaFiltro && `(solo ${categoriaFiltro})`}
         </button>
       </div>
 
-      {/* Controles de paginación */}
+      {/* Paginación */}
       <div className="flex justify-center mt-4 space-x-4">
         <button
-          onClick={paginaAnterior}
+          onClick={() => setPaginaActual(p => Math.max(1, p - 1))}
           disabled={paginaActual === 1}
           className="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600 disabled:opacity-50"
-        >
-          Anterior
-        </button>
-
+        >Anterior</button>
         <span className="px-4 py-2">Página {paginaActual} de {totalPaginas}</span>
-
         <button
-          onClick={siguientePagina}
+          onClick={() => setPaginaActual(p => Math.min(totalPaginas, p + 1))}
           disabled={paginaActual === totalPaginas}
           className="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600 disabled:opacity-50"
-        >
-          Siguiente
-        </button>
+        >Siguiente</button>
       </div>
     </div>
   );

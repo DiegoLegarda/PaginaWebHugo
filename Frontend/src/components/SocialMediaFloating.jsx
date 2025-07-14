@@ -15,7 +15,7 @@ function SocialMediaFloating() {
 
   const instagramLink = isMobile
     ? 'instagram://user?username=TU_USUARIO'  // Este abre la app de Instagram
-    : 'https://instagram.com/TU_USUARIO';
+    : 'https://www.instagram.com/runningpopayan1?igsh=c2J6bXdvMTMzemQ1';
 
   return (
     <div className="fixed left-4 bottom-4 flex flex-col gap-4 z-50">

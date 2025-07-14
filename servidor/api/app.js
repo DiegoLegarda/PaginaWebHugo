@@ -4,6 +4,13 @@ const { iniciarBot } = require('./telegrambot');
 const cors = require('cors');
 const router = express.Router();
 
+//crear carpeta si no exite
+const fs = require('fs');
+const path = require('path');
+
+const dir = path.join(__dirname, 'uploads');
+if (!fs.existsSync(dir)) fs.mkdirSync(dir);
+
 
 const app = express();
 const puerto = process.env.PORT || 3001;
@@ -12,11 +19,14 @@ const puerto = process.env.PORT || 3001;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+
 const allowedOrigins = [
   'http://localhost:5173',
   'https://pagina-running-popayan.vercel.app'
   
 ];
+
+
 // Iniciar el bot
 iniciarBot();
 
@@ -29,9 +39,19 @@ app.use(cors({
       callback(new Error('No permitido por CORS'));
     }
   },
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  methods: ['GET', 'POST', 'PUT', 'DELETE','PATCH'],
   allowedHeaders: ['Content-Type', 'Authorization']
 }));
+
+// archivos estáticos
+// antes de express.static
+app.use('/uploads', (req, res, next) => {
+  console.log('▶️  GET /uploads' + req.url);
+  next();
+});
+
+app.use('/uploads', express.static(path.join(__dirname, '..', 'uploads')));
+
 
 
 //escribir un metodo get

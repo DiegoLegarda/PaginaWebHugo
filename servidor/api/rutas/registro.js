@@ -1,39 +1,35 @@
+// rutas/registro.js
 const express = require('express');
-const router = express.Router();
+const router  = express.Router();
+const upload  = require('../Intermediarios/upload');
+
 const {
   exportarExcel,
   exportarPDF,
-   registrarUsuario,
+  registrarUsuario,
   obtenerRegistros,
   obtenerRegistroPorId,
   actualizarRegistro,
-  eliminarRegistro
-  
+  eliminarRegistro,
+  marcarPagado,
+  desmarcarPagado,
+  actualizarPago          
 } = require('../controladores/registroController');
 
-
-//Exportar a excel
+/* ---------- exportaciones ---------- */
 router.get('/exportar-excel', exportarExcel);
+router.get('/exportar-pdf'  , exportarPDF);
 
-//Exportar a pdf
-router.get('/exportar-pdf', exportarPDF);
-
-// Crear un nuevo registro
-router.post('/', registrarUsuario);
-
-// Obtener todos los registros
-router.get('/', obtenerRegistros);
-
-// Obtener un registro por ID
-router.get('/:id', obtenerRegistroPorId);
-
-// Actualizar un registro por ID
-router.put('/:id', actualizarRegistro);
-
-// Eliminar un registro por ID
+/* ---------- CRUD ---------- */
+router.post('/', upload.single('comprobante'), registrarUsuario); // ⬅️ multer aquí
+router.get ('/',  obtenerRegistros);
+router.get ('/:id',  obtenerRegistroPorId);
+router.put ('/:id',  actualizarRegistro);
 router.delete('/:id', eliminarRegistro);
 
-
-
-
+/* ---------- confirmar pago ---------- */
+router.patch('/:id/pagar', marcarPagado);
+router.patch('/:id/despagar', desmarcarPagado);
+router.patch('/:id/pago', actualizarPago);
 module.exports = router;
+
