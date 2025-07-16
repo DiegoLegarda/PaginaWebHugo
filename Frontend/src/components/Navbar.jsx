@@ -14,7 +14,7 @@ function Navbar() {
         <motion.img
           src="/LogoRunning.png"
           alt="Logo 21K"
-          className="h-20 w-20 object-contain"
+          className="h-40 w-40 object-contain"
           initial={{ rotate: -20, opacity: 0 }}
           animate={{ rotate: 0, opacity: 1 }}
           transition={{ duration: 1 }}

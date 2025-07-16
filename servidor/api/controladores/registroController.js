@@ -14,7 +14,6 @@ const registrarUsuario = async (req, res) => {
       return res.status(400).json({ message: 'Todos los campos son obligatorios.' });
     }
 
-    // Validar si ya existe registro por correo o identificación
     const yaExiste = await Registro.findOne({
       $or: [{ correo }, { identificacion }]
     });
@@ -23,13 +22,10 @@ const registrarUsuario = async (req, res) => {
       return res.status(400).json({ message: 'Este usuario ya se ha registrado.' });
     }
 
-    if (!pagado) {
-      return res.status(400).json({ message: 'El registro solo es válido con pago.' });
-    }
-
-    // Obtener el siguiente número de camiseta
     const totalRegistros = await Registro.countDocuments();
     const numeroCamiseta = padNumero(totalRegistros + 1);
+
+    const comprobante = req.file?.filename; // ← ESTA LÍNEA ES CLAVE
 
     const nuevoRegistro = new Registro({
       nombreCompleto,
@@ -37,7 +33,8 @@ const registrarUsuario = async (req, res) => {
       identificacion,
       categoria,
       numeroCamiseta,
-      pagado: true
+      comprobante,     // ← guardar nombre del archivo
+      pagado: pagado === 'true' || pagado === true // ← asegurar booleano
     });
 
     await nuevoRegistro.save();
@@ -47,6 +44,8 @@ const registrarUsuario = async (req, res) => {
     res.status(500).json({ message: 'Error al registrar', error });
   }
 };
+
+
 
 // Obtener registros con paginación
 const obtenerRegistros = async (req, res) => {
