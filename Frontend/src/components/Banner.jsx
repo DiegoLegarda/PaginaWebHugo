@@ -20,11 +20,8 @@ function BannerCarrusel() {
         className="mySwiper"
       >
         <SwiperSlide>
-          <img src="/1.png" alt="Banner 1" className="object-contain w-full max-h-[85vh]" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="/2.png" alt="Banner 2" className="object-contain w-full max-h-[85vh]" />
-        </SwiperSlide>
+          <img src="/Bannermodelo1.png" alt="Banner 1" className="object-contain w-full max-h-[85vh]" />
+        </SwiperSlide>        
       </Swiper>
     </section>
   );

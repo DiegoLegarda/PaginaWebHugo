@@ -1,6 +1,11 @@
 const Registro = require('../modelos/registroModel');
 const ExcelJS = require('exceljs');
 const PDFDocument = require('pdfkit');
+const { enviarCorreoConfirmacion } = require('../utils/emailservice');
+// Helper para formatear el número de camiseta
+// (con ceros a la izquierda hasta 3 dígitos)
+// Ejemplo: 1 → "001", 12 → "012", 123 → "123"
+// (esto es opcional, pero ayuda a mantener un formato consistente)
 
 const padNumero = (num) => {
   return String(num).padStart(3, '0'); // convierte 1 en "001"
@@ -271,18 +276,26 @@ const desmarcarPagado = async (req, res) => {
     res.status(500).json({ mensaje: 'Error en el servidor' });
   }
 };
-const actualizarPago = async (req, res) => {
+ const actualizarPago = async (req, res) => {
   try {
-    // se envía { pagado: true/false }
     const { pagado } = req.body;
+
     const reg = await Registro.findByIdAndUpdate(
       req.params.id,
       { pagado },
       { new: true }
     );
+
     if (!reg) return res.status(404).json({ message: 'Registro no encontrado' });
+
+    // Si se marcó como pagado, se envía el correo de confirmación
+    if (pagado === true) {
+      await enviarCorreoConfirmacion(reg);
+    }
+
     res.json(reg);
   } catch (err) {
+    console.error('Error al actualizar pago:', err);
     res.status(500).json({ message: 'Error al actualizar pago', err });
   }
 };
