@@ -12,23 +12,26 @@ import NewsSection from '../components/NewsSection';
 import Contact from '../components/Contact';
 import SocialMediaFloating from '../components/SocialMediaFloating';
 import Footer from '../components/Footer';
+import Hero from '../components/Hero';
 
 function Home() {
   return (
     <>
       <Navbar />
-      <BannerCarrusel />
+      
+       <Hero/>     
       <Countdown />
       <About />
       <SponsorsCarousel />
       <Categories />
-      <RegistrationForm />
+      
       <Gallery />
       <RouteMap />
       <NewsSection />
       <Contact />
       <SocialMediaFloating />
       <Footer />
+      
     </>
   );
 }
