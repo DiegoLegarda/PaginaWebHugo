@@ -9,9 +9,7 @@ function SponsorsCarousel() {
     { name: 'Patrocinador 1', logo: '/campanario.jpg' },
     { name: 'Patrocinador 2', logo: '/Hotel.png' },
     { name: 'Patrocinador 3', logo: '/SuperGiros.png' },
-    { name: 'Patrocinador 4', logo: '/sponsor4.png' },
-    { name: 'Patrocinador 5', logo: '/sponsor5.png' },
-    { name: 'Patrocinador 6', logo: '/sponsor6.png' },
+  
   ];
 
   return (
