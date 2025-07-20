@@ -12,7 +12,7 @@ function Navbar() {
       {/* Logo con animación */}
       <div className="flex items-center gap-2">
         <motion.img
-          src="/LogoRunning.png"
+          src="/logopaginaHero.png"
           alt="Logo 21K"
           className="h-40 w-40 object-contain"
           initial={{ rotate: -20, opacity: 0 }}
