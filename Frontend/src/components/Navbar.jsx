@@ -32,10 +32,10 @@ function Navbar() {
         <a href="#banner" className="flex items-center gap-2 hover:text-cyan-700 transition"><FaHome />Inicio</a>
         <a href="#about" className="flex items-center gap-2 hover:text-cyan-700 transition"><FaInfoCircle />Sobre el Evento</a>
         <a href="#categories" className="flex items-center gap-2 hover:text-cyan-700 transition"><FaRunning />Categorías</a>
-        <a href="#register" className="flex items-center gap-2 hover:text-cyan-700 transition"><FaEdit />Inscripción</a>
-        <a href="#gallery" className="flex items-center gap-2 hover:text-cyan-700 transition"><FaImage />Galería</a>
+        
+        
         <a href="#route" className="flex items-center gap-2 hover:text-cyan-700 transition"><FaMap />Ruta</a>
-        <a href="#news" className="flex items-center gap-2 hover:text-cyan-700 transition"><FaNewspaper />Noticias</a>
+       
         <a href="#contact" className="flex items-center gap-2 hover:text-cyan-700 transition"><FaEnvelope />Contacto</a>
       </div>
 

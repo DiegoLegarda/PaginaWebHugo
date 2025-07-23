@@ -23,11 +23,10 @@ function Home() {
       <Countdown />
       <About />
       <SponsorsCarousel />
-      <Categories />
-      
-      <Gallery />
+      <Categories />      
+     
       <RouteMap />
-      <NewsSection />
+      
       <Contact />
       <SocialMediaFloating />
       <Footer />
