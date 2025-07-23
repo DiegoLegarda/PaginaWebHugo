@@ -6,7 +6,7 @@ function RouteMap() {
         <img
           src="mapa.png"
           alt="Mapa del Recorrido"
-          className="w-full max-w-4xl h-auto rounded-lg shadow-lg"
+          className="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl h-auto rounded-lg shadow-lg animate-fadeIn"
         />
       </div>
     </section>

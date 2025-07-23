@@ -35,7 +35,7 @@ function Contact() {
 
       <div className="max-w-lg mx-auto mb-6 text-center text-gray-700">
         <p className="flex items-center justify-center gap-2"><FaPhone /> +57 123 456 7890</p>
-        <p className="flex items-center justify-center gap-2"><FaEnvelope /> contacto@mediamaratonpopayan.com</p>
+        <p className="flex items-center justify-center gap-2"><FaEnvelope /> running.popayan21@gmail.com</p>
         <p className="flex items-center justify-center gap-2"><FaMapMarkerAlt /> Popayán, Cauca, Colombia</p>
       </div>
 
