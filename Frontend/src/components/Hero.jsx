@@ -1,10 +1,10 @@
 const Hero = () => {
   return (
     <section
-      className="relative h-screen bg-fixed bg-cover bg-center"
-      style={{ backgroundImage: "url('/4.jpeg')" }} // ⚠️ Asegúrate de usar la ruta correcta
+      className="relative h-screen mt-[84px] bg-fixed bg-cover bg-center"
+      style={{ backgroundImage: "url('/5.jpeg')" }} // ⚠️ Asegúrate de usar la ruta correcta
     >
-      {/* Logo como marca de agua */}
+   
    
     </section>
   );
