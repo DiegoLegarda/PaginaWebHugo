@@ -19,18 +19,19 @@ function Home() {
     <>
       <Navbar />
       
-       <Hero/>     
-      <Countdown />
-      <About />
-      <SponsorsCarousel />
-      <Categories />      
-     
-      <RouteMap />
+      {/* Contenedor principal con padding-top para compensar el navbar fijo */}
+      <main style={{ paddingTop: '96px' }}>
+        <Hero/>     
+        <Countdown />
+        <About />
+        <SponsorsCarousel />
+        <Categories />      
+        <RouteMap />
+        <Contact />
+      </main>
       
-      <Contact />
       <SocialMediaFloating />
       <Footer />
-      
     </>
   );
 }
