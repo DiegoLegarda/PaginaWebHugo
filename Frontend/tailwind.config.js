@@ -2,6 +2,9 @@
 module.exports = {
   content: ["./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
+    fontFamily: {
+      sans: ["Bebas Neue", "sans-serif"],
+    },
     extend: {
       animation: {
         fadeIn: "fadeIn 2s ease-in-out",

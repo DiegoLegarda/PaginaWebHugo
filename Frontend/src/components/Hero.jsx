@@ -22,7 +22,7 @@ const Hero = () => {
       </div>
 
       {/* Contenido */}
-      <div className="relative z-10 h-full flex items-center justify-center text-center px-4">
+      <div className="relative z-10 h-full flex items-center justify-center text-center px-4 md:px-8 animate-fadeIn font-sans">
         <div className="text-white max-w-2xl">
           <h1 className="text-4xl md:text-6xl font-bold mb-4">NOVIEMBRE</h1>
           <p className="text-lg md:text-2xl mb-6">
