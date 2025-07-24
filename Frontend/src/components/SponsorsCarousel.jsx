@@ -6,9 +6,9 @@ import { motion } from 'framer-motion';
 
 function SponsorsCarousel() {
   const sponsors = [
-    { name: 'Patrocinador 1', logo: '/campanario.jpg' },
-    { name: 'Patrocinador 2', logo: '/Hotel.png' },
-    { name: 'Patrocinador 3', logo: '/SuperGiros.png' },
+    { name: 'Itel', logo: '/LogoItel.png' },
+    { name: 'RedesPacifico', logo: '/LogoRyT.png' },
+   
   
   ];
 
