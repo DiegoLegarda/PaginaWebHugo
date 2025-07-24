@@ -9,7 +9,7 @@ module.exports = {
       keyframes: {
         fadeIn: {
           "0%": { opacity: "0" },
-          "100%": { opacity: "0.6" }, // Changed from 1 to 0.6 for a more subtle effect
+          "100%": { opacity: "0.9" }, // Changed from 1 to 0.6 for a more subtle effect
         },
       },
     },

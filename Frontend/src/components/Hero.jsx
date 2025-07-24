@@ -4,7 +4,7 @@ const Hero = () => {
       className="w-full flex items-center justify-center text-white text-center"
       style={{
         minHeight: '100svh',
-        backgroundImage: "url('/5.jpeg')",
+        backgroundImage: "url('/RUNNING.svg')",
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
@@ -13,7 +13,7 @@ const Hero = () => {
     >
       {/* Overlay oscuro */}
       <div 
-        className="absolute inset-0 bg-black opacity-30"
+        className="absolute inset-0 bg-black opacity-0"
       ></div>
 
       
