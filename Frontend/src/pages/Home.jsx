@@ -20,7 +20,7 @@ function Home() {
       <Navbar />
       
       {/* Contenedor principal con padding-top para compensar el navbar fijo */}
-      <main style={{ paddingTop: '96px' }}>
+      <main style={{ paddingTop: '1px' }}>
         <Hero/>     
         <Countdown />
         <About />
