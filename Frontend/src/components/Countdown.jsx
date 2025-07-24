@@ -23,8 +23,7 @@ function Countdown() {
   return (
     <section className="bg-[#8cca00] text-white text-center p-6">
       <h2 className="text-3xl font-bold mb-4">Faltan...</h2>
-      <h2 className="text-2xl md:text-4xl font-bold mb-4">¡Faltan solo!</h2>
-      <div className="flex justify-center gap-6 text-3xl font-mono">
+        <div className="flex justify-center gap-6 text-3xl font-mono">
         <div><span className="font-bold">{timeLeft.days}</span> días</div>
         <div><span className="font-bold">{timeLeft.hours}</span> hrs</div>
         <div><span className="font-bold">{timeLeft.minutes}</span> min</div>
