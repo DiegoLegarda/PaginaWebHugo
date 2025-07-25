@@ -34,7 +34,7 @@ function Contact() {
       <h2 className="text-3xl font-bold mb-6 text-center">Contáctanos</h2>
 
       <div className="max-w-lg mx-auto mb-6 text-center text-gray-700">
-        <p className="flex items-center justify-center gap-2"><FaPhone /> +57 123 456 7890</p>
+        <p className="flex items-center justify-center gap-2"><FaPhone /> +57 312 452 2776</p>
         <p className="flex items-center justify-center gap-2"><FaEnvelope /> running.popayan21@gmail.com</p>
         <p className="flex items-center justify-center gap-2"><FaMapMarkerAlt /> Popayán, Cauca, Colombia</p>
       </div>
