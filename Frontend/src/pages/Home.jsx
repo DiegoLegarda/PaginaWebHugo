@@ -23,10 +23,10 @@ function Home() {
       <main style={{ paddingTop: '1px' }}>
         <Hero/>     
         <Countdown />
-        <About />
-        <SponsorsCarousel />
+        <About />        
         <Categories />      
         <RouteMap />
+        <SponsorsCarousel />
         <Contact />
       </main>
       
