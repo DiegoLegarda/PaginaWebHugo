@@ -8,7 +8,7 @@ function Navbar() {
   const toggleMenu = () => setMenuOpen(!menuOpen);
 
   return (
-    <nav className="fixed top-0 w-full h-24 bg-gradient-to-r from-white to-cyan-500 text-white-500 flex items-center justify-between px-6 py-4 z-50 shadow-md">
+    <nav className="fixed top-0 w-full h-24  text-white-500 flex items-center justify-between px-6 py-4 z-50 shadow-md">
       {/* Logo con animación */}
       <div className="flex items-center gap-2">
         <motion.img
