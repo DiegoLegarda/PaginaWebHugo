@@ -22,21 +22,21 @@ function SocialMediaFloating() {
   return (
     <div className="fixed left-4 bottom-4 flex flex-col gap-4 z-50">
       {/* Facebook */}
-      <a href={facebookLink} target="_blank" rel="noopener noreferrer" className="bg-blue-500 text-white p-3 rounded-full shadow-lg hover:bg-blue-700 flex items-center justify-center">
+      <a href={facebookLink} target="_blank" rel="noopener noreferrer" className="bg-white text-blue-600 w-10 h-10 rounded-full shadow-lg hover:bg-gray-100 flex items-center justify-center">
         {/* Aquí pegas tu icono de Facebook */}
-        <img src="/facebook.png" alt="Facebook" className="w-8 h-8" /> {/* Ajusta la ruta y el tamaño */}
+        <img src="/facebook.png" alt="Facebook" className="w-10 h-10" /> {/* Ajusta la ruta y el tamaño */}
       </a>
 
       {/* Instagram */}
-      <a href={instagramLink} target="_blank" rel="noopener noreferrer" className="bg-pink-500 text-white p-3 rounded-full shadow-lg hover:bg-pink-600 flex items-center justify-center">
+      <a href={instagramLink} target="_blank" rel="noopener noreferrer" className="bg-white text-blue-600 w-10 h-10 rounded-full shadow-lg hover:bg-gray-100 flex items-center justify-center">
         {/* Aquí pegas tu icono de Instagram */}
-        <img src="/instagram.png" alt="Instagram" className="w-8 h-8" /> {/* Ajusta la ruta y el tamaño */}
+        <img src="/instagram.png" alt="Instagram" className="w-10 h-10" /> {/* Ajusta la ruta y el tamaño */}
       </a>      
 
       {/* Telegram */}
-      <a href={telegramLink} target="_blank" rel="noopener noreferrer" className="bg-blue-500 text-white p-3 rounded-full shadow-lg hover:bg-blue-600 flex items-center justify-center">
+      <a href={telegramLink} target="_blank" rel="noopener noreferrer" className="bg-white text-blue-600 w-10 h-10 rounded-full shadow-lg hover:bg-gray-100 flex items-center justify-center">
         {/* Aquí pegas tu icono de Telegram */}
-        <img src="/telegram.png" alt="Telegram" className="w-8 h-8" /> {/* Ajusta la ruta y el tamaño */}
+        <img src="/telegram.png" alt="Telegram" className="w-10 h-10" /> {/* Ajusta la ruta y el tamaño */}
       </a>
     </div>
   );
