@@ -8,7 +8,7 @@ const Hero = () => {
       {/* Contenedor de imagen - Versión mejorada */}
       <div className="absolute inset-0 flex items-center justify-center">
   <img
-    src="/test7.jpeg"
+    src="/test9.png"
     alt="Fondo hero"
     // Eliminamos las clases min-w-full y min-h-full que la estiraban
     style={{
