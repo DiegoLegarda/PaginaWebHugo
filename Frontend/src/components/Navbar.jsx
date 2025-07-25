@@ -31,7 +31,7 @@ function Navbar() {
       <div className="hidden lg:flex gap-6">
         <a href="#banner" className="flex items-center gap-2 hover:text-cyan-700 transition"><FaHome />Inicio</a>
         <a href="#about" className="flex items-center gap-2 hover:text-cyan-700 transition"><FaInfoCircle />Sobre el Evento</a>
-        <a href="#categories" className="flex items-center gap-2 hover:text-cyan-700 transition"><FaRunning />Categorías</a>
+        <a href="#categories" className="flex items-center gap-2 hover:text-cyan-700 transition"><FaRunning />Distancias</a>
         
         
         <a href="#route" className="flex items-center gap-2 hover:text-cyan-700 transition"><FaMap />Ruta</a>
@@ -44,7 +44,7 @@ function Navbar() {
         <div className="absolute top-24 left-0 w-full bg-gradient-to-r from-white to-cyan-500 text-white-500 flex flex-col items-center gap-6 py-6 lg:hidden shadow-md">
           <a onClick={toggleMenu} href="#banner" className="flex items-center gap-2 hover:text-cyan-700 transition"><FaHome />Inicio</a>
           <a onClick={toggleMenu} href="#about" className="flex items-center gap-2 hover:text-cyan-700 transition"><FaInfoCircle />Sobre el Evento</a>
-          <a onClick={toggleMenu} href="#categories" className="flex items-center gap-2 hover:text-cyan-700 transition"><FaRunning />Categorías</a>
+          <a onClick={toggleMenu} href="#categories" className="flex items-center gap-2 hover:text-cyan-700 transition"><FaRunning />Distancias</a>
 
           
           <a onClick={toggleMenu} href="#route" className="flex items-center gap-2 hover:text-cyan-700 transition"><FaMap />Ruta</a>

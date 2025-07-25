@@ -44,7 +44,7 @@ function Contact() {
         <input type="email" name="correo" placeholder="Correo electrónico" value={formData.correo} onChange={handleChange} required className="p-3 border rounded" />
         <input type="text" name="asunto" placeholder="Asunto" value={formData.asunto} onChange={handleChange} required className="p-3 border rounded" />
         <textarea name="mensaje" placeholder="Mensaje" value={formData.mensaje} onChange={handleChange} required className="p-3 border rounded" rows="4"></textarea>
-        <button type="submit" className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded transition">
+        <button type="submit" className="bg-[#030777] hover:bg-blue-600 text-white font-bold py-2 px-4 rounded transition">
           Enviar Mensaje
         </button>
         {alerta && <p className="text-center mt-4">{alerta}</p>}
