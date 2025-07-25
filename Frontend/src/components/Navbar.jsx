@@ -45,10 +45,10 @@ function Navbar() {
           <a onClick={toggleMenu} href="#banner" className="flex items-center gap-2 hover:text-cyan-700 transition"><FaHome />Inicio</a>
           <a onClick={toggleMenu} href="#about" className="flex items-center gap-2 hover:text-cyan-700 transition"><FaInfoCircle />Sobre el Evento</a>
           <a onClick={toggleMenu} href="#categories" className="flex items-center gap-2 hover:text-cyan-700 transition"><FaRunning />Categorías</a>
-          <a onClick={toggleMenu} href="#register" className="flex items-center gap-2 hover:text-cyan-700 transition"><FaEdit />Inscripción</a>
-          <a onClick={toggleMenu} href="#gallery" className="flex items-center gap-2 hover:text-cyan-700 transition"><FaImage />Galería</a>
+
+          
           <a onClick={toggleMenu} href="#route" className="flex items-center gap-2 hover:text-cyan-700 transition"><FaMap />Ruta</a>
-          <a onClick={toggleMenu} href="#news" className="flex items-center gap-2 hover:text-cyan-700 transition"><FaNewspaper />Noticias</a>
+
           <a onClick={toggleMenu} href="#contact" className="flex items-center gap-2 hover:text-cyan-700 transition"><FaEnvelope />Contacto</a>
         </div>
       )}
