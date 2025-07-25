@@ -1,15 +1,11 @@
 function Categories() {
   return (
-    // Aplicamos el fondo azul y el color de texto blanco directamente a la sección
-    <section id="categories" className="bg-blue-600 text-white py-12">
-      {/* El título se centrará automáticamente dentro de la sección */}
-      <h2 className="text-3xl font-bold text-center mb-8">Distancias</h2>
+    <section id="categories" className="py-12 bg-gray-50"> {/* Agregamos un poco de padding vertical y un fondo claro a la sección */}
+      <h2 className="text-3xl font-bold text-center mb-8">Distancias</h2> {/* Centramos el título y le damos un margen inferior */}
       
-      {/* La lista de ítems también se centrará y los ítems serán simples textos blancos */}
-      <ul className="flex flex-col items-center space-y-4">
-        {/* Solo el texto, sin fondo individual para cada <li> */}
-        <li className="text-xl font-semibold">6K Recreativa</li>
-        <li className="text-xl font-semibold">12K Competitiva</li>
+      <ul className="flex flex-col items-center space-y-4"> {/* Contenedor flex para centrar los ítems y darles espacio vertical */}
+        <li className="bg-blue-600 text-white p-4 rounded-lg shadow-md w-64 text-center text-xl font-semibold">6K Recreativa</li>
+        <li className="bg-blue-600 text-white p-4 rounded-lg shadow-md w-64 text-center text-xl font-semibold">12K Competitiva</li>
       </ul>
     </section>
   )
