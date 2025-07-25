@@ -8,14 +8,14 @@ const Hero = () => {
       {/* Contenedor de imagen - Versión mejorada */}
       <div className="absolute inset-0 flex items-center justify-center">
   <img
-    src="/test9.png"
+    src="/test7.jpeg"
     alt="Fondo hero"
     // Eliminamos las clases min-w-full y min-h-full que la estiraban
     style={{
       width: 'auto', // Deja que el ancho se ajuste proporcionalmente
-      height: '150%', // Ajusta esta altura. Puedes probar '50%', '40%', etc.
-      maxWidth: '150%', // Limita el ancho máximo para que no se desborde en pantallas grandes
-      maxHeight: '150%', // Limita la altura máxima
+      height: '90%', // Ajusta esta altura. Puedes probar '50%', '40%', etc.
+      maxWidth: '100%', // Limita el ancho máximo para que no se desborde en pantallas grandes
+      maxHeight: '100%', // Limita la altura máxima
       objectFit: 'contain', // Usa 'contain' para asegurar que la imagen completa sea visible sin recortarse
       objectPosition: 'center'
     }}
