@@ -16,7 +16,7 @@ function SocialMediaFloating() {
     : 'https://facebook.com/jugo.listo.9';
 
   const instagramLink = isMobile
-    ? 'instagram://user?username=TU_USUARIO'
+    ? 'https://www.instagram.com/runningpopayan1?igsh=c2J6bXdvMTMzemQ1'
     : 'https://www.instagram.com/runningpopayan1?igsh=c2bzmxcwMTMzemQ1';
 
   return (
