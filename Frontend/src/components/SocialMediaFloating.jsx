@@ -12,7 +12,7 @@ function SocialMediaFloating() {
     : 'https://t.me/Runningpopabot';
 
   const facebookLink = isMobile
-    ? 'fb://profile/jugo.listo.9'
+    ? 'https://facebook.com/jugo.listo.9'
     : 'https://facebook.com/jugo.listo.9';
 
   const instagramLink = isMobile
