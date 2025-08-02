@@ -27,7 +27,7 @@ const Hero = () => {
   <div className="text-white"> {/* Eliminamos max-w-2xl aquí */}
     <h1 className="text-7xl md:text-4xl font-bold mb-2">NOVIEMBRE</h1>
     <p className="text-2xl md:text-6xl mb-1">
-      desde el Cauca corremos por la vida
+      desde el corazón del Cauca corremos por la vida
     </p>
   </div>
 </div>
