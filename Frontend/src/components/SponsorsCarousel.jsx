@@ -8,10 +8,7 @@ function SponsorsCarousel() {
   const sponsors = [
     { name: 'Itel', logo: '/LogoItel.png' },
     { name: 'RedesPacifico', logo: '/LogoRyT.png' },
-    { name: 'HotelAchalai', logo: '/Hotel.png' },
-    { name: 'campanario', logo: '/campanario.jpg' },
-    { name: 'supergiros', logo: '/supergiros.jpeg' },
-    { name: 'eurosport', logo: '/euroesport.jpeg' }
+       { name: 'eurosport', logo: '/euroesport.jpeg' }
   
   ];
 
