@@ -19,7 +19,7 @@ function Categorias6() {
 
   return (
     <section className="min-h-screen bg-white py-10 px-4 sm:px-8 md:px-16">
-      <h1 className="text-4xl font-bold text-center mb-10 text-gray-800">Categorías de Competencia</h1>
+      <h1 className="text-4xl font-bold text-center mb-10 text-gray-800">Premiación y categorias</h1>
 
       <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
         {categorias.map((cat, idx) => (
