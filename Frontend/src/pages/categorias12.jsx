@@ -28,7 +28,17 @@ function Categorias() {
     {
       nombre: "Master B",
       grupo: "Damas y Varones",
-      edades: "50 años en adelante",
+      edades: "50 - 29 años",
+      premios: [
+        "1° puesto: $500.000",
+        "2° puesto: $400.000",
+        "3° puesto: $200.000",
+      ],
+    },
+    {
+      nombre: "Master C",
+      grupo: "Varones",
+      edades: "60 años en adelante",
       premios: [
         "1° puesto: $500.000",
         "2° puesto: $400.000",

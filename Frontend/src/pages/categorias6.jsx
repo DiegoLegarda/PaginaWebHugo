@@ -3,9 +3,8 @@ import { Link } from "react-router-dom";
 function Categorias6() {
   const categorias = [
     {
-      nombre: "6K Abierto",
+      nombre: "6K Abierta",
       grupo: "Damas y Varones",
-      
       premios: [
         "1° puesto: $800.000",
         "2° puesto: $600.000",
@@ -30,8 +29,7 @@ function Categorias6() {
           >
             <h2 className="text-xl font-semibold text-blue-700 mb-1">{cat.nombre}</h2>
             <p className="text-gray-600 mb-1">{cat.grupo}</p>
-            <p className="text-sm text-gray-500 mb-4">Edad: {cat.edades}</p>
-            <ul className="text-gray-700 space-y-1">
+              <ul className="text-gray-700 space-y-1">
               {cat.premios.map((premio, i) => (
                 <li key={i}>🏅 {premio}</li>
               ))}

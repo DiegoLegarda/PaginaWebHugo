@@ -25,7 +25,7 @@ const Hero = () => {
 {/* Contenido */}
 <div className="relative z-10 h-full flex items-start justify-center text-center px-4 md:px-8 animate-fadeIn font-sans pt-[3.5rem] md:pt-16">
   <div className="text-white">
-    <h1 className="text-7xl md:text-4xl font-bold mb-2">NOVIEMBRE</h1>
+    <h1 className="text-4xl md:text-4xl font-bold mb-2">16 de NOVIEMBRE</h1>
     <p className="text-2xl md:text-6xl mb-1">
       desde el corazón del Cauca corremos por la vida
     </p>
