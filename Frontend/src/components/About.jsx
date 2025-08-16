@@ -14,17 +14,18 @@ function About() {
       <p className="text-lg text-center max-w-3xl mx-auto">
        Running Popayán es un evento que promueve la sana competencia y el amor por el deporte en la hermosa ciudad de Popayán. Con distancias de 6K, y 12K, este evento está diseñado para corredores de todos los niveles. Únete a nosotros en noviembre de 2025 para una experiencia inolvidable llena de energía, camaradería y pasión por el running.
       </p>
-     <section id="galeria" className="py-12 bg-gray-50">
-  <div className="relative w-full overflow-hidden pb-[56.25%]"> {/* 16:9 */}
-    <iframe
-      className="absolute top-0 left-0 w-full h-full object-cover"
-      src="https://www.youtube.com/embed/IluynVHavhU?modestbranding=1&rel=0&controls=1"
-      title="Video de la carrera"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-      allowFullScreen
-    ></iframe>
-  </div>
-</section>
+      <section id="galeria" className="py-12 bg-gray-50 flex justify-center">
+        <div className="relative w-full max-w-md overflow-hidden pb-[177.78%]"> {/* 9:16 proporción vertical */}
+          <iframe
+            className="absolute top-0 left-0 w-full h-full object-contain"
+            src="https://www.youtube.com/embed/IluynVHavhU?modestbranding=1&rel=0&controls=1"
+            title="Video de la carrera"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+            loading="lazy"
+          ></iframe>
+        </div>
+      </section>
 
     </motion.section>
     
