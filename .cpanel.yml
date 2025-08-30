@@ -4,17 +4,20 @@ deployment:
     # Entramos al frontend
     - cd Frontend
 
-    # Instalamos dependencias solo si no existen (para que sea más rápido)
-    - if [ ! -d "node_modules" ]; then /bin/npm install --legacy-peer-deps; fi
+    # Añadimos Node al PATH (usa la versión 16 que activaste en cPanel)
+    - export PATH=/opt/cpanel/ea-nodejs16/bin:$PATH
+
+    # Instalamos dependencias solo si no existen
+    - if [ ! -d "node_modules" ]; then npm install --legacy-peer-deps; fi
 
     # Construimos el proyecto con Vite
-    - /bin/npm run build
+    - npm run build
 
-    # Definimos la ruta de despliegue (ajusta "tuusuario" por el tuyo de cPanel)
+    # Definimos la ruta de despliegue
     - export DEPLOYPATH=/home/orunnino5/public_html
 
     # Limpiamos el public_html
-    - /bin/rm -rf $DEPLOYPATH/*
+    - rm -rf $DEPLOYPATH/*
 
     # Copiamos la build al hosting
-    - /bin/cp -R dist/* $DEPLOYPATH/
+    - cp -R dist/* $DEPLOYPATH/
