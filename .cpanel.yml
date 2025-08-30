@@ -11,7 +11,7 @@ deployment:
     - /bin/npm run build
 
     # Definimos la ruta de despliegue (ajusta "tuusuario" por el tuyo de cPanel)
-    - export DEPLOYPATH=/home/tuusuario/public_html
+    - export DEPLOYPATH=/home/orunnino5/public_html
 
     # Limpiamos el public_html
     - /bin/rm -rf $DEPLOYPATH/*
