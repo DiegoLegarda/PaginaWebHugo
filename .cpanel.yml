@@ -3,21 +3,8 @@ deployment:
   tasks:
     # Entramos al frontend
     - cd Frontend
-
-    # Añadimos Node al PATH (usa la versión 16 que activaste en cPanel)
-    - export PATH=/opt/cpanel/ea-nodejs16/bin:$PATH
-
-    # Instalamos dependencias solo si no existen
-    - if [ ! -d "node_modules" ]; then npm install --legacy-peer-deps; fi
-
-    # Construimos el proyecto con Vite
-    - npm run build
-
     # Definimos la ruta de despliegue
     - export DEPLOYPATH=/home/orunnino5/public_html
-
-    # Limpiamos el public_html
     - rm -rf $DEPLOYPATH/*
+    - cp -R Frontend/dist/* $DEPLOYPATH/
 
-    # Copiamos la build al hosting
-    - cp -R dist/* $DEPLOYPATH/
