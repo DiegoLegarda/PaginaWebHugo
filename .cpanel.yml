@@ -1,0 +1,20 @@
+---
+deployment:
+  tasks:
+    # Entramos al frontend
+    - cd frontend
+
+    # Instalamos dependencias solo si no existen (para que sea más rápido)
+    - if [ ! -d "node_modules" ]; then /bin/npm install --legacy-peer-deps; fi
+
+    # Construimos el proyecto con Vite
+    - /bin/npm run build
+
+    # Definimos la ruta de despliegue (ajusta "tuusuario" por el tuyo de cPanel)
+    - export DEPLOYPATH=/home/tuusuario/public_html
+
+    # Limpiamos el public_html
+    - /bin/rm -rf $DEPLOYPATH/*
+
+    # Copiamos la build al hosting
+    - /bin/cp -R dist/* $DEPLOYPATH/
