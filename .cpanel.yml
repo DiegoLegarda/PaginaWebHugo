@@ -1,6 +1,4 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/orunnino5/public_html
-    - /bin/rm -rf $DEPLOYPATH/*
-    - /bin/cp -R Frontend/dist/* $DEPLOYPATH/
+    - /bin/cp -R Frontend/dist/* /home/orunnino5/public_html/
