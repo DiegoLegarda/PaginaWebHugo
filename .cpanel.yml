@@ -2,7 +2,7 @@
 deployment:
   tasks:
     # Entramos al frontend
-    - cd frontend
+    - cd Frontend
 
     # Instalamos dependencias solo si no existen (para que sea más rápido)
     - if [ ! -d "node_modules" ]; then /bin/npm install --legacy-peer-deps; fi
