@@ -8,12 +8,12 @@ function Categories() {
       <ul className="flex flex-col items-center space-y-4">
         <li>
           <Link to="/categoria6k" className="block bg-[#030777] text-white p-4 rounded-lg shadow-md w-64 text-center text-xl font-semibold hover:bg-[#040a99] transition">
-            6K Recreativa
+            6K Ruta Verde
           </Link>
         </li>
         <li>
           <Link to="/categoria12k" className="block bg-[#030777] text-white p-4 rounded-lg shadow-md w-64 text-center text-xl font-semibold hover:bg-[#040a99] transition">
-            12K Competitiva
+            12K Ruta Barranquero
           </Link>
         </li>
       </ul>
