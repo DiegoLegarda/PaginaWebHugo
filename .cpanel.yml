@@ -2,4 +2,8 @@
 deployment:
   tasks:
     - export DEPLOYPATH=/home/orunnino5/public_html/
-    - cp -R dist/* $DEPLOYPATH
+    - cd Frontend
+    - npm ci
+    - npm run build
+    - cd ..
+    - cp -R Frontend/dist/* $DEPLOYPATH
