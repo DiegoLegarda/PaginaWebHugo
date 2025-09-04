@@ -1,20 +1,18 @@
 ---
 deployment:
   tasks:
-    # Entramos al frontend
-    - cd rontend
-
-    # Instalamos dependencias solo si no existen (para que sea más rápido)
-    - if [ ! -d "node_modules" ]; then /bin/npm install --legacy-peer-deps; fi
-
-    # Construimos el proyecto con Vite
-    - /bin/npm run build
-
-    # Definimos la ruta de despliegue (ajusta "tuusuario" por el tuyo de cPanel)
-    - export DEPLOYPATH=/home/orunnino5/public_html
-
-    # Limpiamos el public_html
-    - /bin/rm -rf $DEPLOYPATH/*
-
-    # Copiamos la build al hosting
-    - /bin/cp -R dist/* $DEPLOYPATH/
+    # Definir donde se va a desplegar
+    - export DEPLOYPATH=/home/$USER/public_html/
+    # Limpiar directorio destino (opcional - ten cuidado con esto)
+    - find $DEPLOYPATH -maxdepth 1 -name "*.html" -delete
+    - find $DEPLOYPATH -maxdepth 1 -name "*.js" -delete
+    - find $DEPLOYPATH -maxdepth 1 -name "*.css" -delete
+    - rm -rf $DEPLOYPATH/assets
+    # Copiar archivos de la carpeta dist
+    - cp -R dist/* $DEPLOYPATH
+    # Crear .htaccess para React Router (si usas react-router-dom)
+    - echo "Options -MultiViews" > $DEPLOYPATH/.htaccess
+    - echo "RewriteEngine On" >> $DEPLOYPATH/.htaccess
+    - echo "RewriteCond %{REQUEST_URI} !\\.[a-zA-Z0-9]{1,5}$" >> $DEPLOYPATH/.htaccess
+    - echo "RewriteCond %{REQUEST_URI} !/$" >> $DEPLOYPATH/.htaccess
+    - echo "RewriteRule . /index.html [L]" >> $DEPLOYPATH/.htaccess
