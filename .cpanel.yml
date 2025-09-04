@@ -1,5 +1,15 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/orunnino5/public_html/
-    - echo "Deployment test" > $DEPLOYPATH/test.txt
+    # Limpiar public_html primero
+    - find /home/orunnino5/public_html -name "*.html" -delete
+    - find /home/orunnino5/public_html -name "*.js" -delete
+    - find /home/orunnino5/public_html -name "*.css" -delete
+    - rm -rf /home/orunnino5/public_html/assets
+    # Copiar archivos de React
+    - cp -R Frontend/dist/* /home/orunnino5/public_html/
+    # Crear .htaccess para React Router
+    - echo "RewriteEngine On" > /home/orunnino5/public_html/.htaccess
+    - echo "RewriteCond %{REQUEST_FILENAME} !-f" >> /home/orunnino5/public_html/.htaccess
+    - echo "RewriteCond %{REQUEST_FILENAME} !-d" >> /home/orunnino5/public_html/.htaccess
+    - echo "RewriteRule . /index.html [L]" >> /home/orunnino5/public_html/.htaccess
