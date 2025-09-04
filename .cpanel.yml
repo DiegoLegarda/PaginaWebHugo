@@ -2,8 +2,8 @@
 deployment:
   tasks:
     - export DEPLOYPATH=/home/orunnino5/public_html/
-    - cd Frontend
-    - npm ci
-    - npm run build
-    - cd ..
     - cp -R Frontend/dist/* $DEPLOYPATH
+    - echo "RewriteEngine On" > $DEPLOYPATH/.htaccess
+    - echo "RewriteCond %{REQUEST_FILENAME} !-f" >> $DEPLOYPATH/.htaccess
+    - echo "RewriteCond %{REQUEST_FILENAME} !-d" >> $DEPLOYPATH/.htaccess
+    - echo "RewriteRule . /index.html [L]" >> $DEPLOYPATH/.htaccess
