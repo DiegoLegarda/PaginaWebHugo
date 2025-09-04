@@ -1,18 +1,6 @@
+
 ---
 deployment:
   tasks:
-    # Definir donde se va a desplegar
-    - export DEPLOYPATH=/home/$USER/public_html/
-    # Limpiar directorio destino (opcional - ten cuidado con esto)
-    - find $DEPLOYPATH -maxdepth 1 -name "*.html" -delete
-    - find $DEPLOYPATH -maxdepth 1 -name "*.js" -delete
-    - find $DEPLOYPATH -maxdepth 1 -name "*.css" -delete
-    - rm -rf $DEPLOYPATH/assets
-    # Copiar archivos de la carpeta dist
+    - export DEPLOYPATH=/home/orunnino5/public_html/
     - cp -R dist/* $DEPLOYPATH
-    # Crear .htaccess para React Router (si usas react-router-dom)
-    - echo "Options -MultiViews" > $DEPLOYPATH/.htaccess
-    - echo "RewriteEngine On" >> $DEPLOYPATH/.htaccess
-    - echo "RewriteCond %{REQUEST_URI} !\\.[a-zA-Z0-9]{1,5}$" >> $DEPLOYPATH/.htaccess
-    - echo "RewriteCond %{REQUEST_URI} !/$" >> $DEPLOYPATH/.htaccess
-    - echo "RewriteRule . /index.html [L]" >> $DEPLOYPATH/.htaccess
