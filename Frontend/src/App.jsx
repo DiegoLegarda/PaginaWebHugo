@@ -10,6 +10,8 @@ import Terminos from './pages/Terminos';
 import { AuthProvider } from './AuthContext';
 import Categorias from './pages/categorias12';
 import Categorias6 from './pages/categorias6';
+import Categories from './components/Categories';
+import Hero from './components/Hero';
 
 function App() {
   return (
@@ -17,12 +19,13 @@ function App() {
       
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/hero" element={<Hero />} />
           <Route path="/registro" element={<Registro />} />
           <Route path="/contacto" element={<Contacto />} />
+          <Route path="/categories" element={<Categories />} />
           <Route path="/admin" element={<AdminLogin />} />
           <Route path="/terminos" element={<Terminos />} />
-          <Route path="/categoria12k" element={<Categorias />} />
-          <Route path="/categoria6k" element={<Categorias6 />} />
+          
           {/* RUTAS PROTEGIDAS SEPARADAS */}
           <Route path="/panel" element={<PrivateRoute><AdminPanel /></PrivateRoute>} />
           <Route path="/panel/registros" element={<PrivateRoute><Registro /></PrivateRoute>} />

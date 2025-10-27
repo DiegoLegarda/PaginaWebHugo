@@ -49,15 +49,7 @@ function SocialMediaFloating() {
         <img src="/instagram.png" alt="Instagram" className="w-10 h-10" />
       </a>
 
-      {/* Telegram */}
-      <a
-        href={telegramLink}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="bg-white text-blue-600 w-10 h-10 rounded-full shadow-lg hover:bg-gray-100 flex items-center justify-center"
-      >
-        <img src="/telegram.png" alt="Telegram" className="w-10 h-10" />
-      </a>
+      
     </div>
   );
 }
