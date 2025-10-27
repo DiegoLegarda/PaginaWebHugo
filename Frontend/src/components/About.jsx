@@ -15,11 +15,8 @@ function About() {
 </h2>
 
 <p className="text-lg text-center max-w-3xl mx-auto font-poppins leading-relaxed">
-  Running Popayán es una celebración del deporte, la naturaleza y la belleza colonial de la ciudad blanca. 
-  Con recorridos de 6K y 12K, esta experiencia está pensada para corredores de todos los niveles, desde 
-  quienes dan sus primeros pasos hasta los más experimentados. Vive la energía de Popayán, su gente y sus 
-  paisajes en un evento donde se respira pasión, unión y orgullo por correr en el corazón del Cauca. 🏃‍♂️ 
-  Únete este noviembre de 2025 y sé parte de una experiencia que te inspirará a correr con el alma.
+  Running Popayán celebra el deporte, la naturaleza y la belleza colonial de Popayán con recorridos de 6K y 12K para todos los niveles. Vive una experiencia única, llena de energía, pasión y amor por correr en el corazón del Cauca.
+Únete este 16 de noviembre de 2025 corre con el alma y siente el corazón de Popayán en cada paso.
 </p>
       <section id="galeria" className="py-12 bg-gray-50 flex justify-center">
         <div className="relative w-full max-w-md overflow-hidden pb-[177.78%]"> {/* 9:16 proporción vertical */}
