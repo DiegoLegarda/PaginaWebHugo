@@ -24,7 +24,7 @@ function Home() {
         <Hero/>     
         <Countdown />
         <About />        
-        <Categories />      
+        <Categories/>      
         <RouteMap />
         <SponsorsCarousel />
         <Contact />

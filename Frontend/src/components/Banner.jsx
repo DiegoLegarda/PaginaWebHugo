@@ -24,7 +24,7 @@ function BannerCarrusel() {
       >
         <SwiperSlide>
           <img
-            src="/Bannermodelo1.png"
+            src="/FondoFinal.jpeg"
             alt="Banner 1"
             className="w-full h-full object-cover"
           />

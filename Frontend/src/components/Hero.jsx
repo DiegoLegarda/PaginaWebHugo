@@ -1,38 +1,47 @@
 const Hero = () => {
   return (
-    <div className="relative w-full" style={{
-      height: 'calc(100svh - 6rem)',
-      marginTop: '6rem',
-      overflow: 'hidden'
-    }}>
-      {/* Contenedor de imagen - Versión mejorada */}
-      <div className="absolute inset-0 flex items-center justify-center">
-  <img
-    src="/testfinal.png"
-    alt="Fondo hero"
-    // Eliminamos las clases min-w-full y min-h-full que la estiraban
-    style={{
-      width: 'auto', // Deja que el ancho se ajuste proporcionalmente
-      height: '150%', // Ajusta esta altura. Puedes probar '50%', '40%', etc.
-      maxWidth: '150%', // Limita el ancho máximo para que no se desborde en pantallas grandes
-      maxHeight: '150%', // Limita la altura máxima
-      objectFit: 'contain', // Usa 'contain' para asegurar que la imagen completa sea visible sin recortarse
-      objectPosition: 'center'
-    }}
-  />
-</div>
+    <section id='hero'
+      className="relative w-full flex items-center justify-center overflow-hidden"
+      style={{
+        height: 'calc(100svh - 6rem)', // ocupa toda la altura menos el header
+        marginTop: '6rem',
+       
+      }}
+    >
+      {/* Imagen de fondo que se adapta correctamente */}
+      <img
+        src="/Fondocompleto.jpg"
+        alt="Fondo hero"
+        className="
+          absolute top-0 left-0 w-full h-full
+          object-cover md:object-cover   /* siempre llena el fondo */
+          object-center                  /* centrada */
+        "
+      />
 
-{/* Contenido */}
-<div className="relative z-10 h-full flex items-start justify-center text-center px-4 md:px-8 animate-fadeIn font-sans pt-[3.5rem] md:pt-16">
-  <div className="text-white">
-    <h1 className="text-4xl md:text-4xl font-bold mb-2">16 de NOVIEMBRE</h1>
-    <p className="text-2xl md:text-6xl mb-1">
-      desde el corazón del Cauca corremos por la vida
-    </p>
-  </div>
-</div>
-     
-    </div>
+      {/* Capa oscura para contraste del texto */}
+      <div className="absolute inset-0 bg-black bg-opacity-40"></div>
+
+      {/* Contenido centrado */}
+      <div className="relative z-10 text-center flex flex-col items-center justify-center px-6">
+        <h1 className="text-white text-3xl md:text-6xl font-bold mb-6 drop-shadow-lg">
+          ¡Corremos por el cauca, corremos por la vida!
+        </h1>
+        <a
+          href="https://eventr.id/004jhRiL"
+          target="_blank"
+          
+          rel="noopener noreferrer"
+          className="
+            bg-blue-600 hover:bg-green-500 text-white font-semibold
+            px-8 py-3 rounded-full text-lg md:text-xl shadow-lg
+            transition-transform duration-300 transform hover:scale-105
+          "
+        >
+          Inscríbete
+        </a>
+      </div>
+    </section>
   );
 };
 
