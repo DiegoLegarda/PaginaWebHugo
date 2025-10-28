@@ -38,7 +38,7 @@ function SponsorsCarousel() {
           <SwiperSlide key={index} className="flex justify-center">
             <motion.div
               whileHover={{ scale: 1.1 }}
-              className="bg-gray-100 p-4 rounded shadow flex items-center justify-center"
+              className="bg-gradient-to-r from-[#082E73] to-[#25C2F2] p-1 rounded shadow flex items-center justify-center"
             >
               <img
                 src={sponsor.logo}

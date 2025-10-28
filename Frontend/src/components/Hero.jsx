@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 const Hero = () => {
   return (
     <section id='hero'
@@ -27,19 +28,16 @@ const Hero = () => {
         <h1 className="text-white text-3xl md:text-6xl font-bold mb-6 drop-shadow-lg">
           ¡Corremos por el cauca, corremos por la vida!
         </h1>
-        <a
+       <motion.a
           href="https://eventr.id/004jhRiL"
           target="_blank"
-          
           rel="noopener noreferrer"
-          className="
-            bg-blue-600 hover:bg-green-500 text-white font-semibold
-            px-8 py-3 rounded-full text-lg md:text-xl shadow-lg
-            transition-transform duration-300 transform hover:scale-105
-          "
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.95 }}
+          className="mt-12 px-10 py-4 bg-gradient-to-r from-[#082E73] to-[#25C2F2] text-white font-bold text-2xl rounded-full shadow-lg hover:shadow-[0_0_25px_#25C2F2] transition-all duration-300"
         >
           Inscríbete
-        </a>
+        </motion.a>
       </div>
     </section>
   );
