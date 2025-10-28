@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 function Premiacion() {
   return (
     <section id="premiacion">
-      <div className="min-h-screen flex flex-col items-center justify-center  p-10">
+      <div className="min-h-screen flex flex-col items-center justify-center  p-20">
         {/* Título */}
         <h1 className="text-5xl font-extrabold text-[#082E73] mb-12 drop-shadow-lg text-center">
           Premiación Running Popayán
