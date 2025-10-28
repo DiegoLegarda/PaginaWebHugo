@@ -6,11 +6,17 @@ import { motion } from 'framer-motion';
 
 function SponsorsCarousel() {
   const sponsors = [
-    { name: 'Itel', logo: '/LogoItel.png' },
-    { name: 'RedesPacifico', logo: '/LogoRyT.png' },
-       { name: 'eurosport', logo: '/euroesport.jpeg' }
+     { name: 'smartfit', logo: '/SmartFit.jpeg' },       
+    { name: 'eurosport', logo: '/euroesport.jpeg' },
+    { name: 'caucano', logo: '/Caucano.jpeg' },
+    { name: 'Itel', logo: '/LogoItel.png' }, 
+    { name: 'yawuazu', logo: '/Yawazu.jpeg' },
+    { name: 'RedesPacifico', logo: '/LogoRyT.png' }
+   
   
   ];
+
+  
 
   return (
     <section id="sponsors" className="p-8 bg-white">
