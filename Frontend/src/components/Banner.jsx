@@ -28,6 +28,8 @@ function BannerCarrusel() {
           <img
             src="/FondoFinal.png"
             alt="Banner 1"
+            loading="lazy"
+            decoding="async"
             className="w-full h-full object-cover object-center"
           />
         </SwiperSlide>
@@ -36,6 +38,8 @@ function BannerCarrusel() {
           <img
             src="/Fondocompleto.jpg"
             alt="Banner 2"
+            loading="lazy"
+            decoding="async"
             className="w-full h-full object-cover object-center"
           />
         </SwiperSlide>
@@ -44,7 +48,9 @@ function BannerCarrusel() {
           <img
             src="/Fondo3.jpg"
             alt="Banner 3"
-            className="w-full h-full object-cover object-center"
+            loading="lazy"
+            decoding="async"
+            className="w-full h-full object-cover object-top"
           />
         </SwiperSlide>
       </Swiper>
@@ -93,3 +99,4 @@ function BannerCarrusel() {
 }
 
 export default BannerCarrusel;
+
