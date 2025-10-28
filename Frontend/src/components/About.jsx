@@ -10,9 +10,10 @@ function About() {
       viewport={{ once: true }}
       transition={{ duration: 0.8 }}
     >
-      <h2 className="text-3xl font-semibold mb-6 text-center font-poppins capitalize">
-  Sobre el evento
-</h2>
+   
+ <h1 className="text-5xl font-extrabold text-[#082E73] mb-12 drop-shadow-lg text-center">
+         Sobre el evento
+        </h1>
 
 <p className="text-lg text-center max-w-3xl mx-auto font-poppins leading-relaxed">
   Running Popayán celebra el deporte, la naturaleza y la belleza colonial de Popayán con recorridos de 6K y 12K para todos los niveles. Vive una experiencia única, llena de energía, pasión y amor por correr en el corazón del Cauca.

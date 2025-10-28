@@ -12,6 +12,7 @@ import Categorias from './pages/categorias12';
 import Categorias6 from './pages/categorias6';
 import Categories from './components/Categories';
 import Hero from './components/Hero';
+import Premiacion from './components/Premiacion';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route path="/registro" element={<Registro />} />
           <Route path="/contacto" element={<Contacto />} />
           <Route path="/categories" element={<Categories />} />
+          <Route path="/premiacion" element={<Premiacion />} />
           <Route path="/admin" element={<AdminLogin />} />
           <Route path="/terminos" element={<Terminos />} />
           
