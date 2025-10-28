@@ -17,6 +17,7 @@ function SponsorsCarousel() {
     { name: 'postobon', logo: '/Postobon.jpeg' },
     { name: 'andresbello', logo: '/Andresbello.jpeg' },
     { name: 'antioquenho', logo: '/Antioquenho.jpeg' },
+    { name: 'sdeporte', logo: '/SDeporte.jpeg' },
     { name: 'RedesPacifico', logo: '/Redes.jpeg' }
    
   
@@ -35,7 +36,7 @@ function SponsorsCarousel() {
         modules={[Autoplay]}
         spaceBetween={30}
         slidesPerView={3}
-        autoplay={{ delay: 2000 }}
+        autoplay={{ delay: 500 }}
         loop={true}
         breakpoints={{
           640: { slidesPerView: 2 },
