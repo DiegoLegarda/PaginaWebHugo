@@ -1,10 +1,9 @@
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay, EffectFade, Pagination, Navigation, Keyboard } from 'swiper/modules';
-import { motion } from 'framer-motion';
-import 'swiper/css';
-import 'swiper/css/effect-fade';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, EffectFade, Pagination, Keyboard } from "swiper/modules";
+import { motion } from "framer-motion";
+import "swiper/css";
+import "swiper/css/effect-fade";
+import "swiper/css/pagination";
 
 function BannerCarrusel() {
   return (
@@ -12,16 +11,16 @@ function BannerCarrusel() {
       id="banner"
       className="relative w-full h-[70vh] md:h-[85vh] overflow-hidden mt-20"
     >
-      {/* Carrusel */}
+      {/* Carrusel optimizado */}
       <Swiper
-        modules={[Autoplay, EffectFade, Pagination, Navigation, Keyboard]}
+        modules={[Autoplay, EffectFade, Pagination, Keyboard]}
         effect="fade"
+        fadeEffect={{ crossFade: true }} // transición fluida entre imágenes
         autoplay={{ delay: 5000, disableOnInteraction: false }}
         loop={true}
         pagination={{ clickable: true }}
-        navigation={true}
         keyboard={{ enabled: true }}
-        speed={1000}
+        speed={800} // velocidad de transición suave
         className="h-full"
       >
         <SwiperSlide>
@@ -56,9 +55,9 @@ function BannerCarrusel() {
       </Swiper>
 
       {/* Capa de gradiente para contraste */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/25 to-transparent pointer-events-none" />
 
-      {/* Contenido centrado con animaciones */}
+      {/* Contenido centrado animado */}
       <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6 z-20">
         {/* Frase principal */}
         <motion.h1
@@ -99,4 +98,3 @@ function BannerCarrusel() {
 }
 
 export default BannerCarrusel;
-
