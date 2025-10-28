@@ -4,7 +4,7 @@ function RouteMap() {
   const [isZoomed, setIsZoomed] = useState(false);
 
   return (
-    <section id="route" className="p-8 bg-gray-100">
+    <section id="route" className="p-8 bg-[#B7E300]">
       <h2 className="text-3xl font-bold mb-6 text-center">Mapa del Recorrido</h2>
       <div className="flex justify-center">
         <img

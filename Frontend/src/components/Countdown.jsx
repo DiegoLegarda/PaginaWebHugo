@@ -21,7 +21,7 @@ function Countdown() {
   }, []);
 
   return (
-    <section className="bg-[#8cca00] text-white text-center p-6">
+    <section className="bg-[#B7E300] text-white text-center p-6">
       <h2 className="text-3xl font-bold mb-4">Faltan...</h2>
         <div className="flex justify-center gap-6 text-3xl font-mono">
         <div><span className="font-bold">{timeLeft.days}</span> días</div>
