@@ -13,6 +13,10 @@ function SponsorsCarousel() {
     { name: 'yawuazu', logo: '/Yawazu.jpeg' },
     { name: 'Achalai', logo: '/Achalai.jpeg' },
     { name: 'Tout', logo: '/Tout.jpeg' },
+    { name: 'unicauca', logo: '/Unicauca.jpeg' },
+    { name: 'postobon', logo: '/Postobon.jpeg' },
+    { name: 'andresbello', logo: '/Andresbello.jpeg' },
+    { name: 'antioquenho', logo: '/Antioquenho.jpeg' },
     { name: 'RedesPacifico', logo: '/Redes.jpeg' }
    
   
