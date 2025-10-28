@@ -28,6 +28,9 @@ const Hero = () => {
         <h1 className="text-white text-3xl md:text-6xl font-bold mb-6 drop-shadow-lg">
           ¡Corremos por el cauca, corremos por la vida!
         </h1>
+        <h1 className="text-white text-3xl md:text-6xl font-bold mb-6 drop-shadow-lg">
+          16 de Noviembre de 2025
+        </h1>
        <motion.a
           href="https://eventr.id/004jhRiL"
           target="_blank"

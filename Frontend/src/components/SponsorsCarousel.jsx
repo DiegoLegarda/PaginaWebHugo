@@ -9,9 +9,11 @@ function SponsorsCarousel() {
      { name: 'smartfit', logo: '/SmartFit.jpeg' },       
     { name: 'eurosport', logo: '/euroesport.jpeg' },
     { name: 'caucano', logo: '/Caucano.jpeg' },
-    { name: 'Itel', logo: '/LogoItel.png' }, 
+    { name: 'Itel', logo: '/Itel.jpeg' }, 
     { name: 'yawuazu', logo: '/Yawazu.jpeg' },
-    { name: 'RedesPacifico', logo: '/LogoRyT.png' }
+    { name: 'Achalai', logo: '/Achalai.jpeg' },
+    { name: 'Tout', logo: '/Tout.jpeg' },
+    { name: 'RedesPacifico', logo: '/Redes.jpeg' }
    
   
   ];
