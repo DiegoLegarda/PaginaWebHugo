@@ -31,7 +31,9 @@ function Contact() {
 
   return (
     <section id="contact" className="p-8 bg-gray-100">
-      <h2 className="text-3xl font-bold mb-6 text-center">Contáctanos</h2>
+      <h1 className="text-5xl font-extrabold text-[#082E73] mb-12 drop-shadow-lg text-center">
+          Contáctanos
+        </h1>     
 
       <div className="max-w-lg mx-auto mb-6 text-center text-gray-700">
         <p className="flex items-center justify-center gap-2"><FaPhone />+57 301 4554318</p>
