@@ -13,6 +13,7 @@ import Contact from '../components/Contact';
 import SocialMediaFloating from '../components/SocialMediaFloating';
 import Footer from '../components/Footer';
 import Hero from '../components/Hero';
+import Premiacion from '../components/Premiacion';
 
 function Home() {
   return (
@@ -24,7 +25,8 @@ function Home() {
         <Hero/>     
         <Countdown />
         <About />        
-        <Categories/>      
+        <Categories/>
+        <Premiacion />      
         <RouteMap />
         <SponsorsCarousel />
         <Contact />
