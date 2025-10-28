@@ -1,0 +1,74 @@
+.countdown-section {
+  background-color: #B7E300;
+  text-align: center;
+  padding: 3rem 1rem;
+  color: #082E73;
+  font-family: "Poppins", sans-serif;
+}
+
+.countdown-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+}
+
+.countdown-grid {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+/* Contenedor de cada número */
+.flip-card-container {
+  perspective: 1000px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.flip-card {
+  position: relative;
+  width: 90px;
+  height: 110px;
+  background: #082E73;
+  color: #B7E300;
+  font-size: 3rem;
+  font-weight: 900;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(8, 46, 115, 0.4);
+  transform-style: preserve-3d;
+  animation: flip 1s infinite linear;
+}
+
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flip-card-back {
+  transform: rotateX(180deg);
+}
+
+/* Animación tipo flip */
+@keyframes flip {
+  0% { transform: rotateX(0); }
+  45% { transform: rotateX(-90deg); }
+  55% { transform: rotateX(-90deg); }
+  100% { transform: rotateX(-180deg); }
+}
+
+/* Etiqueta debajo de cada número */
+.flip-label {
+  margin-top: 0.5rem;
+  font-weight: 600;
+  color: #082E73;
+  font-size: 1.1rem;
+}

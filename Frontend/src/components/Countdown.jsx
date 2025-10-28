@@ -1,13 +1,24 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
+import FlipDigit from "./FlipDigit";
 
-function Countdown() {
-  const eventDate = new Date('2025-11-16T06:00:00');
-  const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+export default function Countdown() {
+  const eventDate = new Date("2025-11-16T06:00:00");
+  const [timeLeft, setTimeLeft] = useState({
+    days: 0,
+    hours: 0,
+    minutes: 0,
+    seconds: 0,
+  });
 
   useEffect(() => {
-    const interval = setInterval(() => {
+    const updateCountdown = () => {
       const now = new Date();
       const difference = eventDate - now;
+
+      if (difference <= 0) {
+        setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+        return;
+      }
 
       const days = Math.floor(difference / (1000 * 60 * 60 * 24));
       const hours = Math.floor((difference / (1000 * 60 * 60)) % 24);
@@ -15,22 +26,27 @@ function Countdown() {
       const seconds = Math.floor((difference / 1000) % 60);
 
       setTimeLeft({ days, hours, minutes, seconds });
-    }, 1000);
+    };
+
+    const interval = setInterval(updateCountdown, 1000);
+    updateCountdown();
 
     return () => clearInterval(interval);
   }, []);
 
   return (
-    <section className="bg-[#B7E300] text-white text-center p-6">
-      <h2 className="text-3xl font-bold mb-4">Faltan...</h2>
-        <div className="flex justify-center gap-6 text-3xl font-mono">
-        <div><span className="font-bold">{timeLeft.days}</span> días</div>
-        <div><span className="font-bold">{timeLeft.hours}</span> hrs</div>
-        <div><span className="font-bold">{timeLeft.minutes}</span> min</div>
-        <div><span className="font-bold">{timeLeft.seconds}</span> seg</div>
+    <section className="bg-[#B7E300] py-10 text-center">
+      <h2 className="text-3xl md:text-4xl font-bold text-[#082E73] mb-8 uppercase">
+        Faltan...
+      </h2>
+
+      <div className="flex justify-center gap-4 md:gap-8">
+        <FlipDigit value={timeLeft.days} label="Días" />
+        <FlipDigit value={timeLeft.hours} label="Horas" />
+        <FlipDigit value={timeLeft.minutes} label="Min" />
+        <FlipDigit value={timeLeft.seconds} label="Seg" />
       </div>
     </section>
   );
 }
 
-export default Countdown;
