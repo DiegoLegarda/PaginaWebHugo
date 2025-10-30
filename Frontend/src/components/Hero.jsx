@@ -37,7 +37,7 @@ const Hero = () => {
                        bg-lime-500 hover:bg-lime-400
                        text-white font-bold text-2xl rounded-full 
                        shadow-lg hover:shadow-[0_0_25px_#84cc16] 
-                       transition-all duration-300 mr-44"
+                       transition-all duration-300 mr-36"
           >
             Inscríbete
           </motion.a>
