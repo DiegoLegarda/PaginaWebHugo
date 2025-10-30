@@ -17,7 +17,13 @@ function SponsorsCarousel() {
     { name: 'postobon', logo: '/Postobon.jpeg' },
     { name: 'andresbello', logo: '/Andresbello.jpeg' },
     { name: 'antioquenho', logo: '/Antioquenho.jpeg' },
-    { name: 'sdeporte', logo: '/SDeporte.jpeg' },
+    { name: 'sdeporte', logo: '/SecretariaDeporte.jpeg' },
+    { name: 'byloco', logo: '/Byloco.jpeg' },
+    { name: 'farmacenter', logo: '/Farmacenter.jpeg' },
+    { name: 'indeprotes', logo: '/Indeportes.jpeg' },
+    { name: 'paresport', logo: '/Paresport.jpeg' },
+    { name: 'supergiros', logo: '/Supergiros.jpeg' },
+    { name: 'reserva', logo: '/Reservacampestre.jpeg' },
     { name: 'RedesPacifico', logo: '/Redes.jpeg' }
    
   
