@@ -25,9 +25,9 @@ const Hero = () => {
         />
 
          {/* Botón centrado pero más abajo */}
-        <div className="absolute inset-0 z-10 flex flex-col items-center justify-end pb-10 md:pb-16 text-center px-6">
+        <div className="absolute inset-0 z-10 flex flex-col items-center justify-end pb-4 md:pb-16 text-center px-6 ">
           <motion.a
-            href="https://wa.me/573014554318?text=Hola%2C%20quiero%20inscribirme%20a%20la%20carrera%20del%20Cauca"
+            href="https://wa.me/573014554318?text=Hola%2C%20quiero%20inscribirme%20a%20la%20carrera%20RunningPopayan%2025"
             target="_blank"
             rel="noopener noreferrer"
             whileHover={{ scale: 1.1 }}
@@ -36,7 +36,7 @@ const Hero = () => {
                        bg-lime-500 hover:bg-lime-400
                        text-white font-bold text-2xl rounded-full 
                        shadow-lg hover:shadow-[0_0_25px_#84cc16] 
-                       transition-all duration-300"
+                       transition-all duration-300 mr-24"
           >
             Inscríbete
           </motion.a>
