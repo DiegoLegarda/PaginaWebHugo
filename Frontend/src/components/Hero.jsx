@@ -1,48 +1,46 @@
 import { motion } from "framer-motion";
+
 const Hero = () => {
   return (
-    <section id='hero'
-      className="relative w-full flex items-center justify-center overflow-hidden"
-      style={{
-        height: 'calc(100svh - 6rem)', // ocupa toda la altura menos el header
-        marginTop: '6rem',
-       
-      }}
+    <section
+      id="hero"
+      className="relative w-full overflow-hidden bg-black flex flex-col items-center justify-center"
+      style={{ marginTop: "6rem" }}
     >
-      {/* Imagen de fondo que se adapta correctamente */}
-      <img
-        src="/Fondocompleto.jpg"
-        alt="Fondo hero"
-        className="
-          absolute top-0 left-0 w-full h-full
-          object-cover md:object-cover   /* siempre llena el fondo */
-          object-center                  /* centrada */
-        "
-      />
+      {/* Contenedor adaptable */}
+      <div className="relative w-full aspect-[4/1] sm:aspect-[3/1] md:aspect-[2.5/1] lg:aspect-[4/1]">
 
-      {/* Capa oscura para contraste del texto */}
-      <div className="absolute inset-0 bg-black bg-opacity-40"></div>
+        {/* Imagen HORIZONTAL para pantallas medianas y grandes */}
+        <img
+          src="/Bannerpromocion.png"
+          alt="Banner horizontal"
+          className="hidden md:block w-full h-full object-contain object-center bg-black"
+        />
 
-      {/* Contenido centrado */}
-      <div className="relative z-10 text-center flex flex-col items-center justify-center px-6">
-        <h1 className="text-white text-3xl md:text-6xl font-bold mb-6 drop-shadow-lg">
-          ¡Corremos por el cauca, corremos por la vida!
-        </h1>
-        <h1 className="text-3xl md:text-6xl font-bold mb-6 drop-shadow-lg 
-             bg-[#25C2F2] 
-             text-transparent bg-clip-text">
-          16 de Noviembre de 2025
-        </h1>
-       <motion.a
-          href="https://eventr.id/004jhRiL"
-          target="_blank"
-          rel="noopener noreferrer"
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.95 }}
-          className="mt-12 px-10 py-4 bg-gradient-to-r from-[#082E73] to-[#25C2F2] text-white font-bold text-2xl rounded-full shadow-lg hover:shadow-[0_0_25px_#25C2F2] transition-all duration-300"
-        >
-          Inscríbete
-        </motion.a>
+        {/* Imagen VERTICAL para celulares */}
+        <img
+          src="/bannervertical.jpeg"
+          alt="Banner vertical"
+          className="block md:hidden w-full h-full object-contain object-center bg-black"
+        />
+
+         {/* Botón centrado pero más abajo */}
+        <div className="absolute inset-0 z-10 flex flex-col items-center justify-end pb-10 md:pb-16 text-center px-6">
+          <motion.a
+            href="https://wa.me/573001234567?text=Hola%2C%20quiero%20inscribirme%20a%20la%20carrera%20del%20Cauca"
+            target="_blank"
+            rel="noopener noreferrer"
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.95 }}
+            className="flex items-center gap-3 px-10 py-4 
+                       bg-lime-500 hover:bg-lime-400
+                       text-white font-bold text-2xl rounded-full 
+                       shadow-lg hover:shadow-[0_0_25px_#84cc16] 
+                       transition-all duration-300"
+          >
+            Inscríbete
+          </motion.a>
+        </div>
       </div>
     </section>
   );
